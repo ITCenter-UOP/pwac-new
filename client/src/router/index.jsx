@@ -3,12 +3,14 @@ import WebSite from '../layouts/WebSite'
 import HomePage from '../pages/HomePage/HomePage'
 import Login from '../pages/AuthPage/Login'
 import CreateAccount from '../pages/AuthPage/CreateAccount'
+import DefultError from '../component/Errors/DefultError'
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<WebSite /> } >
+                    <Route path='*' element={<DefultError /> } />
                     <Route index element={<HomePage /> } />
                     <Route path='login' element={<Login /> } />
                     <Route path='create-account' element={<CreateAccount /> } />
