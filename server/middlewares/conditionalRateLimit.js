@@ -1,12 +1,16 @@
 const rateLimit = require("express-rate-limit");
-const User = require("../models/User"); // adjust path if needed
-const Role = require("../models/Role");
+const User = require("../models/user.model"); // adjust path if needed
+const Role = require("../models/role.model");
 const jwt = require("jsonwebtoken");
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 10000, 
     max: 1000, 
 });
+
+// in this middleware headle the ratelimilting for all users
+// in development admin can access freely system without ratelimiting
+// no effect by this middelware 
 
 async function conditionalRateLimit(req, res, next) {
     try {
@@ -24,7 +28,7 @@ async function conditionalRateLimit(req, res, next) {
 
         if (!user) return limiter(req, res, next);
 
-        // If admin, skip rate limit
+        // If admin, skip rate limit 
         if (user.role && user.role.name === "admin") {
             return next();
         }
