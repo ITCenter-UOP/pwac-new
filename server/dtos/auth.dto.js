@@ -21,7 +21,7 @@ exports.LoginResDTO = (token, user, message = "Login Success") => ({
 
 // forget password
 exports.ForgetPasswordDTO = (email) => ({ email })
-exports.ForgetPasswordResDTO = (token, message = "Email Verification Success, Verification email sent.") => ({ token, message })
+exports.ForgetPasswordResDTO = (token, message = "Email Verification Success, Verification email sent.") => ({success: true, token, message })
 
 // verify OTP
 exports.VerifyOTPDTO = (token, otp) => ({ token, otp })

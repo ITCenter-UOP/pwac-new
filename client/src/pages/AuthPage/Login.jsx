@@ -50,7 +50,7 @@ const Login = () => {
                     setTimeout(() => navigate('/my-account'), 2000);
                 } else {
                     setTimeout(() => navigate('/'), 2000);
-                }                
+                }
             } else {
                 showToast(false, res.data.message);
             }
@@ -114,7 +114,11 @@ const Login = () => {
                         />
 
                         <div className="flex justify-between mt-3 text-sm text-gray-500">
-                            <span className="hover:text-[#560606] cursor-pointer transition">Forgot Password?</span>
+                            <span className="hover:text-[#560606] cursor-pointer transition">
+                                <a href="/forget-password">
+                                    Forgot Password?
+                                </a>
+                            </span>
                             <span className="hover:text-[#560606] cursor-pointer transition">
                                 <a href="/create-account">
                                     Sign Up

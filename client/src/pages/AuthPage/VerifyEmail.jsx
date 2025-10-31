@@ -98,7 +98,7 @@ const VerifyEmail = () => {
                     <form onSubmit={handleSubmit} className="space-y-5">
 
                         <DefaultInput
-                            label="Entern OTP"
+                            label="Enter OTP"
                             type="text"
                             name="otp"
                             value={values.otp}
