@@ -14,21 +14,21 @@ const VerifyEmail = () => {
 
     useEffect(() => {
         if (!token) {
-            navigate('/', { replace: true })
-            window.location.reload()
+            navigate('/', { replace: true });
         }
-    }, [token, navigate])
+    }, [token, navigate]);
 
     useEffect(() => {
         if (!verifyEmailInfo.email && token) {
             try {
-                handleEmailVerificationToken(token)
+                handleEmailVerificationToken(token);
             } catch (err) {
-                localStorage.clear()
-                navigate('/')
+                localStorage.clear();
+                navigate('/');
             }
         }
-    }, [verifyEmailInfo, token, handleEmailVerificationToken, navigate])
+    }, [verifyEmailInfo, token, handleEmailVerificationToken, navigate]);
+
     const [values, setValues] = useState({ otp: '' });
 
     const [toastData, setToastData] = useState({ show: false, success: false, message: '' });
@@ -58,8 +58,10 @@ const VerifyEmail = () => {
 
             if (res.data.success === true) {
                 showToast(true, res.data.message);
-                setTimeout(() => navigate('/login'), 2000);
-                localStorage.clear()
+                setTimeout(() => {
+                    navigate('/login');
+                    localStorage.removeItem('emailverify'); 
+                }, 2000);
             } else {
                 showToast(false, res.data.message);
             }
