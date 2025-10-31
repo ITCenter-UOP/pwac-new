@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DefaultInput from '../../component/Form/DefaultInput';
 import signupImg from '../../assets/Quote2img.jpg';
 import API from '../../services/api';
@@ -8,8 +8,29 @@ import Toast from '../../component/Toast/Toast';
 import DefaultButton from '../../component/Buttons/DefaultButton';
 
 const VerifyEmail = () => {
-    const [values, setValues] = useState({ otp: '' });
+    const token = localStorage.getItem('emailverify')
     const navigate = useNavigate();
+    const { verifyEmailInfo, handleEmailVerificationToken } = useAuth()
+
+    useEffect(() => {
+        if (!token) {
+            navigate('/', { replace: true })
+            window.location.reload()
+        }
+    }, [token, navigate])
+
+    useEffect(() => {
+        if (!verifyEmailInfo.email && token) {
+            try {
+                handleEmailVerificationToken(token)
+            } catch (err) {
+                localStorage.clear()
+                navigate('/')
+            }
+        }
+    }, [verifyEmailInfo, token, handleEmailVerificationToken, navigate])
+    const [values, setValues] = useState({ otp: '' });
+
     const [toastData, setToastData] = useState({ show: false, success: false, message: '' });
     const [loading, setLoading] = useState(false);
 
