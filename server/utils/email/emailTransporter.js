@@ -12,11 +12,11 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async ({ to, subject, html, attachments }) => {
     try {
         const info = await transporter.sendMail({
-            from: `"Hotel System - Admin"`,
+            from: `"UOP - PWAC" <${process.env.EMAIL_USER}>`,
             to,
             subject,
             html,
-            attachments: attachments || [] 
+            attachments: attachments || [],
         });
         console.log("Email sent:", info.messageId);
         return true;

@@ -59,7 +59,6 @@ const VerifyOTP = () => {
             if (res.data.success === true) {
                 showToast(true, res.data.message);
                 setTimeout(() => navigate('/update-password'), 2000);
-                localStorage.clear()
             } else {
                 showToast(false, res.data.message);
             }
@@ -89,10 +88,10 @@ const VerifyOTP = () => {
                 {/* Form Side */}
                 <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
                     <h2 className="text-4xl font-extrabold text-[#560606] mb-10 text-center md:text-left">
-                        Verify Your Email
+                        Verify Your OTP
                     </h2>
                     <p className="text-red-500 mb-4">
-                        The OTP already send to Email that you Provided when you Signup
+                        The OTP already send to Email that you Provided when you Requsting Password Rest OTP
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
