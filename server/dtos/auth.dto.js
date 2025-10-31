@@ -34,5 +34,8 @@ exports.UpdatePasswordResDTO = (message = "Password Updated Successful") => ({ s
 // Logout
 exports.LogoutResDTO = (message = "Logout successful") => ({ success: true, message });
 
+exports.updatePassviaDashDTO = (token, currentpass, newpass) => ({ token, currentpass, newpass })
+exports.updatePassviaDashResDTO = (message = "Password Updated Successfully") => ({ success: true, message })
+
 // Error 
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

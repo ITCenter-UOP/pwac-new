@@ -7,7 +7,8 @@ const {
     LoginDTO,
     ForgetPasswordDTO,
     VerifyOTPDTO,
-    UpdatePasswordDTO
+    UpdatePasswordDTO,
+    updatePassviaDashDTO
 } = require("../dtos/auth.dto");
 
 
@@ -157,6 +158,34 @@ const AuthController = {
             )
             res.status(200).json(result)
 
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    updatePasswordViaDash: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const {
+                currentpass,
+                newpass
+            } = req.body
+
+            const updatepassdashdto = updatePassviaDashDTO(token, currentpass, newpass)
+
+            const result = await AuthService.updatePasswordViaDash(
+                updatepassdashdto.token,
+                updatepassdashdto.currentpass,
+                updatepassdashdto.newpass,
+                req
+            )
+
+            res.status(200).json(result)
         }
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
