@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
 import DefaultInput from '../../component/Form/DefaultInput';
 import signupImg from '../../assets/Quote2img.jpg';
+import API from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 const CreateAccount = () => {
     const [values, setValues] = useState({ username: '', email: '', password: '' });
+    const {handleEmailVerificationToken} = useAuth()
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`Username: ${values.username}\nEmail: ${values.email}\nPassword: ${values.password}`);
-        setValues({ username: '', email: '', password: '' });
+        try {
+            const res = await API.post('/api/auth/registation', values)
+            if (res.data.success === true) {
+                alert(res.data.message)
+                handleEmailVerificationToken(res.data.token)
+                navigate('/verify-email')
+            }
+            else{
+                alert(res.data.error)
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
     };
 
     return (
