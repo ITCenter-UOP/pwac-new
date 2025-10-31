@@ -20,25 +20,25 @@ const DashSide = ({ closeSidebar }) => {
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
-        const fetchMyProfileImage = async () => {
-            try {
-                const res = await API.get(`/member/get-myprofileimage?nocache=${Date.now()}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Cache-Control": "no-cache",
-                        Pragma: "no-cache",
-                        Expires: "0",
-                    },
-                });
-                setMyProfileImage(
-                    Array.isArray(res.data.result) ? res.data.result : [res.data.result]
-                );
-            } catch (err) {
-                console.error("Failed to fetch profile image:", err);
-                setMyProfileImage([]);
-            }
-        };
-        fetchMyProfileImage();
+        // const fetchMyProfileImage = async () => {
+        //     try {
+        //         const res = await API.get(`/member/get-myprofileimage?nocache=${Date.now()}`, {
+        //             headers: {
+        //                 Authorization: `Bearer ${token}`,
+        //                 "Cache-Control": "no-cache",
+        //                 Pragma: "no-cache",
+        //                 Expires: "0",
+        //             },
+        //         });
+        //         setMyProfileImage(
+        //             Array.isArray(res.data.result) ? res.data.result : [res.data.result]
+        //         );
+        //     } catch (err) {
+        //         console.error("Failed to fetch profile image:", err);
+        //         setMyProfileImage([]);
+        //     }
+        // };
+        // fetchMyProfileImage();
     }, [token]);
 
     const navitem = [

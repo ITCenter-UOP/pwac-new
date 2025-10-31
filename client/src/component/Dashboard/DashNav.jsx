@@ -35,29 +35,29 @@ const DashNav = ({ onMenuClick }) => {
 
     // Fetch profile image
     useEffect(() => {
-        const fetchmyprofileimage = async () => {
-            try {
-                const res = await API.get(
-                    `/member/get-myprofileimage?nocache=${Date.now()}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            "Cache-Control": "no-cache",
-                            Pragma: "no-cache",
-                            Expires: "0",
-                        },
-                    }
-                );
-                setMyProfileImage(
-                    Array.isArray(res.data.result) ? res.data.result : [res.data.result]
-                );
-            } catch (err) {
-                console.error("Failed to fetch roles:", err);
-                setMyProfileImage([]);
-            }
-        };
+        // const fetchmyprofileimage = async () => {
+        //     try {
+        //         const res = await API.get(
+        //             `/member/get-myprofileimage?nocache=${Date.now()}`,
+        //             {
+        //                 headers: {
+        //                     Authorization: `Bearer ${token}`,
+        //                     "Cache-Control": "no-cache",
+        //                     Pragma: "no-cache",
+        //                     Expires: "0",
+        //                 },
+        //             }
+        //         );
+        //         setMyProfileImage(
+        //             Array.isArray(res.data.result) ? res.data.result : [res.data.result]
+        //         );
+        //     } catch (err) {
+        //         console.error("Failed to fetch roles:", err);
+        //         setMyProfileImage([]);
+        //     }
+        // };
 
-        fetchmyprofileimage();
+        // fetchmyprofileimage();
     }, [token]);
 
     return (
@@ -154,7 +154,7 @@ const DashNav = ({ onMenuClick }) => {
                                 >
                                     <ul className="py-2 text-sm text-fuchsia-100">
                                         <li>
-                                            <Link to={"/Dashboard/profile"}>
+                                            <Link to={"/Dashboard/my-profile"}>
                                                 <button className="flex items-center w-full px-4 py-2 hover:bg-fuchsia-500/20 transition">
                                                     <User className="w-4 h-4 mr-2" /> Profile
                                                 </button>
