@@ -70,59 +70,55 @@ class AuthService {
 
         await sendEmail({
             to: email,
-            subject: "Welcome to MyMart 🛒 | Verify Your Email to Start Shopping",
+            subject: "Welcome to Psychological Wellbeing & Assessment Center | Verify Your Email",
             html: `
-                <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7f7f7; padding: 40px 0;">
                     <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.08);">
                         
                         <!-- Header -->
-                        <div style="background: linear-gradient(135deg, #84cc16, #65a30d); padding: 25px; text-align: center;">
-                            <h1 style="color: #fff; margin: 0; font-size: 28px; font-weight: 800;">Welcome to MyMart</h1>
-                            <p style="color: #ecfccb; margin: 6px 0 0; font-size: 15px;">Your smart shopping partner 🛍️</p>
+                        <div style="background: #560606; padding: 25px; text-align: center;">
+                            <h1 style="color: #fff; margin: 0; font-size: 28px; font-weight: 800;">Welcome to PWAC</h1>
+                            <p style="color: #ffd6d6; margin: 6px 0 0; font-size: 15px;">University of Peradeniya</p>
                         </div>
 
                         <!-- Body -->
                         <div style="padding: 35px; color: #333;">
-                            <h2 style="font-size: 22px; margin-bottom: 12px; color: #365314;">Hey ${username},</h2>
+                            <h2 style="font-size: 22px; margin-bottom: 12px; color: #560606;">Hello ${username},</h2>
 
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #4b5563;">
-                                🎉 Great to have you with us! You’ve successfully joined <strong>MyMart</strong> — where shopping meets simplicity and savings.
+                                You’ve successfully joined <strong>Psychological Wellbeing & Assessment Center</strong> — University of Peradeniya. 
+                                Please verify your email using the OTP below:
                             </p>
 
-                            <p style="font-size: 16px; color: #4b5563;">
-                                Before you start exploring amazing deals and exclusive offers, please verify your email using the One-Time Passcode (OTP) below:
-                            </p>
-
-                            <!-- OTP Box -->
-                            <div style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #3f6212; background: #ecfccb; padding: 18px; text-align: center; border-radius: 12px; margin: 35px 0;">
+                            <div style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #fff; background: #560606; padding: 18px; text-align: center; border-radius: 12px; margin: 35px 0;">
                                 ${otp}
                             </div>
 
                             <p style="font-size: 15px; color: #6b7280;">
-                                ⏳ This code is valid for <strong>10 minutes</strong>. Keep it safe — never share it with anyone.
+                                ⏳ This code is valid for <strong>10 minutes</strong>. Keep it safe — never share it.
                             </p>
 
                             <p style="font-size: 15px; color: #6b7280;">
-                                Didn’t sign up for a MyMart account? Just ignore this message and no action will be taken.
+                                If you didn’t register, just ignore this message.
                             </p>
 
-                            <!-- Divider -->
                             <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;"/>
 
                             <p style="font-size: 15px; color: #475569;">
-                                💚 Once verified, you can explore the latest arrivals, trending products, and exclusive offers curated just for you!
+                                💚 Once verified, you can access our resources and services provided by the center.
                             </p>
                         </div>
 
                         <!-- Footer -->
                         <div style="background-color: #f9fafb; padding: 20px; text-align: center; font-size: 13px; color: #9ca3af;">
-                            <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
-                            <p style="margin: 0;">Your trusted online marketplace 🌿</p>
+                            <p style="margin: 5px 0;">© ${new Date().getFullYear()} Psychological Wellbeing & Assessment Center</p>
+                            <p style="margin: 0;">University of Peradeniya</p>
                         </div>
                     </div>
                 </div>
             `,
         });
+
 
 
         const hashotp = await bcrypt.hash(otp, 10);
@@ -248,57 +244,52 @@ class AuthService {
 
             await sendEmail({
                 to: user.email,
-                subject: "🔐 Login Successful | MyMart Account Access",
+                subject: "Login Successful | Psychological Wellbeing & Assessment Center",
                 html: `
-                <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
-                    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.08);">
-                        
-                        <!-- Header -->
-                        <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
-                            <h1 style="color: #fff; margin: 0; font-size: 26px; font-weight: 800;">Login Successful ✅</h1>
-                            <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Welcome back to MyMart, ${user.username} 🌿</p>
-                        </div>
-
-                        <!-- Body -->
-                        <div style="padding: 35px; color: #333;">
-                            <p style="font-size: 17px; line-height: 1.7; color: #374151; margin-bottom: 22px;">
-                                👋 Hey <strong>${user.username}</strong>, your login to <strong>MyMart</strong> was successful.  
-                                If this was you — awesome! You can continue shopping seamlessly.
-                            </p>
-
-                            <!-- Meta Data Card -->
-                            <div style="background: #ecfccb; border-left: 6px solid #84cc16; border-radius: 10px; padding: 18px 22px; margin: 25px 0;">
-                                <h3 style="margin: 0 0 12px; font-size: 18px; color: #365314;">🔍 Login Details</h3>
-                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>📅 Time:</strong> ${metadata.timestamp}</p>
-                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>💻 Device:</strong> ${metadata.userAgent}</p>
-                                <p style="margin: 4px 0; font-size: 15px; color: #4b5563;"><strong>🌐 IP Address:</strong> ${metadata.ipAddress}</p>
-                            </div>
-
-                            <p style="font-size: 15px; color: #6b7280; margin-top: 18px;">
-                                ⚠️ If this login wasn’t you, we recommend 
-                                <a href="${FRONTEND_URL}/reset-password" 
-                                   style="color: #65a30d; text-decoration: none; font-weight: 600;">
-                                   changing your password immediately
-                                </a> to keep your account secure.
-                            </p>
-
-                            <!-- Divider -->
-                            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;" />
-
-                            <p style="font-size: 15px; color: #475569;">
-                                💚 Stay safe and enjoy a smooth shopping experience on <strong>MyMart</strong> — your trusted online marketplace.
-                            </p>
-                        </div>
-
-                        <!-- Footer -->
-                        <div style="background-color: #f9fafb; padding: 20px; text-align: center; font-size: 13px; color: #9ca3af;">
-                            <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
-                            <p style="margin: 0;">Empowering smarter shopping experiences 🛍️</p>
-                        </div>
-                    </div>
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7f7f7; padding: 40px 0;">
+            <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.08);">
+                
+                <!-- Header -->
+                <div style="background: #560606; padding: 28px; text-align: center;">
+                    <h1 style="color: #fff; margin: 0; font-size: 26px; font-weight: 800;">Login Successful ✅</h1>
+                    <p style="color: #ffd6d6; margin: 6px 0 0; font-size: 15px;">Welcome back, ${user.username}</p>
                 </div>
-            `,
+
+                <!-- Body -->
+                <div style="padding: 35px; color: #333;">
+                    <p style="font-size: 17px; line-height: 1.7; color: #374151; margin-bottom: 22px;">
+                        👋 Hello <strong>${user.username}</strong>, your login was successful.  
+                        If this was you — everything is fine.
+                    </p>
+
+                    <div style="background: #560606; color: #fff; border-radius: 10px; padding: 18px 22px; margin: 25px 0;">
+                        <h3 style="margin: 0 0 12px; font-size: 18px;">🔍 Login Details</h3>
+                        <p style="margin: 4px 0; font-size: 15px;"><strong>📅 Time:</strong> ${metadata.timestamp}</p>
+                        <p style="margin: 4px 0; font-size: 15px;"><strong>💻 Device:</strong> ${metadata.userAgent}</p>
+                        <p style="margin: 4px 0; font-size: 15px;"><strong>🌐 IP Address:</strong> ${metadata.ipAddress}</p>
+                    </div>
+
+                    <p style="font-size: 15px; color: #6b7280; margin-top: 18px;">
+                        ⚠️ If this login wasn’t you, reset your password immediately:
+                        <a href="${FRONTEND_URL}/reset-password" style="color: #560606; font-weight: 600;">Reset Password</a>
+                    </p>
+
+                    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;" />
+                    <p style="font-size: 15px; color: #475569;">
+                        💚 Stay safe and access resources at the Psychological Wellbeing & Assessment Center.
+                    </p>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #f9fafb; padding: 20px; text-align: center; font-size: 13px; color: #9ca3af;">
+                    <p style="margin: 5px 0;">© ${new Date().getFullYear()} Psychological Wellbeing & Assessment Center</p>
+                    <p style="margin: 0;">University of Peradeniya</p>
+                </div>
+            </div>
+        </div>
+    `,
             });
+
         }
 
         return LoginResDTO(token, user);
@@ -361,53 +352,50 @@ class AuthService {
 
         await sendEmail({
             to: email,
-            subject: "🔐 Password Reset Request | MyMart Account",
+            subject: "Password Reset Request | Psychological Wellbeing & Assessment Center",
             html: `
-                <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
-                    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
-                        
-                        <!-- Header -->
-                        <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
-                            <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800;">MyMart 🛒</h1>
-                            <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Your trusted shopping companion 🌿</p>
-                        </div>
-
-                        <!-- Body -->
-                        <div style="padding: 35px; color: #333;">
-                            <h2 style="font-size: 22px; margin-bottom: 12px; color: #365314;">Hello ${existinguser.username},</h2>
-
-                            <p style="font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #4b5563;">
-                                We received a request to <strong>reset your password</strong> for your <strong>MyMart</strong> account.
-                                Use the One-Time Passcode (OTP) below to securely continue:
-                            </p>
-
-                            <!-- OTP Box -->
-                            <div style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #3f6212; background: #ecfccb; padding: 20px; text-align: center; border-radius: 12px; margin: 35px 0;">
-                                ${otp}
-                            </div>
-
-                            <p style="font-size: 15px; color: #6b7280;">
-                                ⏳ This OTP is valid for <strong>10 minutes</strong>. Keep it confidential — do not share it with anyone.
-                            </p>
-
-                            <p style="font-size: 15px; color: #6b7280;">
-                                If you didn’t request this password reset, you can safely ignore this message. Your account will remain secure.
-                            </p>
-
-                            <!-- Divider -->
-                            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 35px 0;" />
-
-                         </div>
-
-                        <!-- Footer -->
-                        <div style="background-color: #f9fafb; padding: 22px; text-align: center; font-size: 13px; color: #9ca3af;">
-                            <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
-                            <p style="margin: 0;">Smarter shopping starts here 🌱</p>
-                        </div>
-                    </div>
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7f7f7; padding: 40px 0;">
+            <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                
+                <!-- Header -->
+                <div style="background: #560606; padding: 28px; text-align: center;">
+                    <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800;">Psychological Wellbeing & Assessment Center</h1>
+                    <p style="color: #ffd6d6; margin: 6px 0 0; font-size: 15px;">University of Peradeniya</p>
                 </div>
-            `,
+
+                <!-- Body -->
+                <div style="padding: 35px; color: #333;">
+                    <h2 style="font-size: 22px; margin-bottom: 12px; color: #560606;">Hello ${existinguser.username},</h2>
+
+                    <p style="font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #4b5563;">
+                        We received a request to reset your password. Use the OTP below to securely continue:
+                    </p>
+
+                    <div style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #fff; background: #560606; padding: 20px; text-align: center; border-radius: 12px; margin: 35px 0;">
+                        ${otp}
+                    </div>
+
+                    <p style="font-size: 15px; color: #6b7280;">
+                        ⏳ This OTP is valid for <strong>10 minutes</strong>. Do not share it.
+                    </p>
+
+                    <p style="font-size: 15px; color: #6b7280;">
+                        If you didn’t request this, ignore this email.
+                    </p>
+
+                    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 35px 0;" />
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #f9fafb; padding: 22px; text-align: center; font-size: 13px; color: #9ca3af;">
+                    <p style="margin: 5px 0;">© ${new Date().getFullYear()} Psychological Wellbeing & Assessment Center</p>
+                    <p style="margin: 0;">University of Peradeniya</p>
+                </div>
+            </div>
+        </div>
+    `,
         });
+
 
 
         const hashotp = await bcrypt.hash(otp, 10);
@@ -516,53 +504,52 @@ class AuthService {
                 const FRONTEND_URL = process.env.FRONTEND_URL;
                 await sendEmail({
                     to: user.email,
-                    subject: "✅ Password Updated Successfully | MyMart Account",
+                    subject: "✅ Password Updated Successfully | Psychological Wellbeing & Assessment Center",
                     html: `
-                        <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7fdf4; padding: 40px 0;">
+                        <div style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f7f7f7; padding: 40px 0;">
                             <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
                                 
                                 <!-- Header -->
-                                <div style="background: linear-gradient(135deg, #84cc16, #4d7c0f); padding: 28px; text-align: center;">
-                                    <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800;">MyMart 🛒</h1>
-                                    <p style="color: #d9f99d; margin: 6px 0 0; font-size: 15px;">Your trusted shopping companion 🌿</p>
+                                <div style="background: #560606; padding: 28px; text-align: center;">
+                                    <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800;">Psychological Wellbeing & Assessment Center</h1>
+                                    <p style="color: #ffd6d6; margin: 6px 0 0; font-size: 15px;">University of Peradeniya</p>
                                 </div>
 
                                 <!-- Body -->
                                 <div style="padding: 35px; color: #333; text-align: center;">
-                                    <div style="font-size: 50px; color: #4d7c0f; margin-bottom: 10px;">🔐</div>
-                                    <h2 style="font-size: 22px; margin-bottom: 12px; color: #365314;">Password Updated Successfully</h2>
+                                    <div style="font-size: 50px; color: #560606; margin-bottom: 10px;">🔐</div>
+                                    <h2 style="font-size: 22px; margin-bottom: 12px; color: #560606;">Password Updated Successfully</h2>
 
                                     <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px; color: #4b5563;">
                                         Hello <strong>${user.username}</strong>,<br>
-                                        Your <strong>MyMart</strong> account password has been updated successfully.  
+                                        Your password for <strong>Psychological Wellbeing & Assessment Center</strong> account has been updated successfully.  
                                         You can now log in with your new password.
                                     </p>
 
                                     <a href='${FRONTEND_URL}/login' 
-                                        style="display: inline-block; padding: 14px 26px; background: linear-gradient(135deg, #84cc16, #4d7c0f);
+                                        style="display: inline-block; padding: 14px 26px; background: #560606;
                                         color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px;
-                                        box-shadow: 0 4px 10px rgba(132,204,22,0.3); transition: background 0.3s;">
-                                        🔑 Go to MyMart Login
+                                        box-shadow: 0 4px 10px rgba(86,6,6,0.3); transition: background 0.3s;">
+                                        🔑 Go to Login
                                     </a>
 
                                     <p style="font-size: 15px; color: #6b7280; margin-top: 30px;">
                                         If you didn’t make this change, please reset your password immediately or contact our support team.
                                     </p>
 
-                                    <!-- Divider -->
                                     <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 35px 0;" />
-
                                 </div>
 
                                 <!-- Footer -->
                                 <div style="background-color: #f9fafb; padding: 22px; text-align: center; font-size: 13px; color: #9ca3af;">
-                                    <p style="margin: 5px 0;">© ${new Date().getFullYear()} MyMart Shopping Site</p>
-                                    <p style="margin: 0;">Smarter shopping starts here 🌱</p>
+                                    <p style="margin: 5px 0;">© ${new Date().getFullYear()} Psychological Wellbeing & Assessment Center</p>
+                                    <p style="margin: 0;">University of Peradeniya</p>
                                 </div>
                             </div>
                         </div>
-                        `,
+                    `,
                 });
+
 
 
             }
