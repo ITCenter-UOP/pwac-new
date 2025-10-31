@@ -1,31 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Menu, Search, Bell, MessageCircle, ChevronDown, User, Settings, LogOut } from 'lucide-react'
-import defultUser from '../../assets/user.png'
-import { useAuth } from '../../context/AuthContext'
-import { Link } from 'react-router-dom'
-import API from '../../services/api'
+import React, { useState, useEffect, useRef } from "react";
+import {
+    Menu,
+    Search,
+    Bell,
+    MessageCircle,
+    ChevronDown,
+    User,
+    Settings,
+    LogOut,
+} from "lucide-react";
+import defultUser from "../../assets/user.png";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
+import API from "../../services/api";
+import { motion, AnimatePresence } from "framer-motion";
 
 const DashNav = ({ onMenuClick }) => {
-    const { auth, logout } = useAuth()
-    const [open, setOpen] = useState(false)
-    const dropdownRef = useRef(null)
+    const { auth, logout } = useAuth();
+    const [open, setOpen] = useState(false);
+    const dropdownRef = useRef(null);
+    const [MyProfileImage, setMyProfileImage] = useState([]);
+    const token = localStorage.getItem("token");
 
-    // Close dropdown if clicked outside
+    // Close dropdown on outside click
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setOpen(false)
+                setOpen(false);
             }
-        }
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [])
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
-    const [MyProfileImage, setMyProfileImage] = useState([])
-    const token = localStorage.getItem('token')
-
+    // Fetch profile image
     useEffect(() => {
         const fetchmyprofileimage = async () => {
             try {
@@ -40,8 +48,9 @@ const DashNav = ({ onMenuClick }) => {
                         },
                     }
                 );
-
-                setMyProfileImage(Array.isArray(res.data.result) ? res.data.result : [res.data.result]);
+                setMyProfileImage(
+                    Array.isArray(res.data.result) ? res.data.result : [res.data.result]
+                );
             } catch (err) {
                 console.error("Failed to fetch roles:", err);
                 setMyProfileImage([]);
@@ -52,112 +61,127 @@ const DashNav = ({ onMenuClick }) => {
     }, [token]);
 
     return (
-        <header className="sticky top-0 z-50 bg-white border-b border-purple-200 shadow-sm">
+        <motion.header
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="sticky top-0 z-50 border-b border-purple-700/30 bg-gradient-to-r from-[#0d0d18]/70 via-[#141428]/70 to-[#0d0d18]/70 backdrop-blur-2xl shadow-[0_0_25px_rgba(147,51,234,0.25)]"
+        >
             <div className="flex items-center justify-between px-4 py-3 lg:px-6">
-                {/* Left Side */}
-                <div className="flex items-center gap-3">
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={onMenuClick}
-                        className="p-2 rounded-lg text-purple-700 hover:bg-purple-100 lg:hidden"
-                    >
-                        <Menu className="w-6 h-6" />
-                    </button>
-
-                    {/* Search */}
-                    <div className="hidden md:flex items-center bg-white border border-purple-200 rounded-lg px-3 py-2 w-80 shadow-sm hover:shadow-md transition">
-                        <Search className="text-purple-500 w-5 h-5 mr-2" />
+                {/* Left Section */}
+                <div className="flex items-center gap-4">
+                    {/* Search Bar */}
+                    <div className="hidden md:flex items-center bg-gradient-to-r from-[#1a1a2b] to-[#131324] border border-fuchsia-800/40 rounded-full px-3 py-2 w-80 shadow-inner focus-within:shadow-[0_0_10px_rgba(255,0,255,0.3)] transition">
+                        <Search className="text-fuchsia-400 w-5 h-5 mr-2" />
                         <input
                             type="text"
                             placeholder="Search..."
-                            className="bg-transparent focus:outline-none w-full text-sm text-purple-700 placeholder-purple-400"
+                            className="bg-transparent focus:outline-none w-full text-sm text-fuchsia-100 placeholder-fuchsia-500/60"
                         />
                     </div>
                 </div>
 
-                {/* Right Side */}
-                <div className="flex items-center gap-5">
+                {/* Right Section */}
+                <div className="flex items-center gap-6">
                     {/* Notification */}
-                    <Link to={'/Dashboard/notifications'}>
-                        <button className="relative text-purple-700 hover:text-purple-900 transition-transform hover:scale-110">
+                    <Link to={"/Dashboard/notifications"}>
+                        <motion.button
+                            whileHover={{ scale: 1.15 }}
+                            className="relative text-fuchsia-400 hover:text-fuchsia-200 transition"
+                        >
                             <Bell className="w-6 h-6" />
-                            <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                            <span className="absolute -top-1 -right-1 bg-fuchsia-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full shadow-lg">
                                 3
                             </span>
-                        </button>
+                        </motion.button>
                     </Link>
 
                     {/* Messages */}
-                    <button className="relative text-purple-700 hover:text-purple-900 transition-transform hover:scale-110">
+                    <motion.button
+                        whileHover={{ scale: 1.15 }}
+                        className="relative text-fuchsia-400 hover:text-fuchsia-200 transition"
+                    >
                         <MessageCircle className="w-6 h-6" />
-                        <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                        <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full shadow-lg">
                             5
                         </span>
-                    </button>
+                    </motion.button>
 
                     {/* User Dropdown */}
                     <div className="relative" ref={dropdownRef}>
-                        <button
+                        <motion.button
+                            whileTap={{ scale: 0.95 }}
                             onClick={() => setOpen(!open)}
-                            className="flex items-center gap-3 focus:outline-none hover:bg-purple-50 rounded-lg px-2 py-1 transition"
+                            className="flex items-center gap-3 rounded-full bg-[#1a1a2b]/60 hover:bg-[#22223a]/60 px-2 py-1 transition border border-fuchsia-800/40"
                         >
-                            {MyProfileImage[0]?.profile_image ? (
+                            <div className="relative">
                                 <img
-                                    src={`${import.meta.env.VITE_APP_API}/uploads/${MyProfileImage[0].profile_image}`}
+                                    src={
+                                        MyProfileImage[0]?.profile_image
+                                            ? `${import.meta.env.VITE_APP_API}/uploads/${MyProfileImage[0].profile_image}`
+                                            : defultUser
+                                    }
                                     alt="User"
-                                    className="h-10 w-10 border-2 border-purple-600 p-1 rounded-full shadow-sm"
+                                    className="h-10 w-10 rounded-full border-2 border-fuchsia-500 object-cover shadow-[0_0_10px_rgba(255,0,255,0.4)]"
                                 />
-                            ) : (
-                                <img
-                                    src={defultUser}
-                                    alt="User"
-                                    className="h-10 w-10 border-2 border-purple-600 p-1 rounded-full shadow-sm"
-                                />
-                            )}
+                                <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border border-[#141428] rounded-full" />
+                            </div>
+
                             <div className="hidden sm:block text-left leading-tight">
-                                <p className="text-purple-700 font-bold text-sm">
-                                    {auth?.user?.username}
+                                <p className="text-fuchsia-200 font-bold text-sm tracking-wide">
+                                    {auth?.user?.username || "User"}
+                                </p>
+                                <p className="text-[10px] text-purple-400 uppercase">
+                                    {auth?.role}
                                 </p>
                             </div>
+
                             <ChevronDown
-                                className={`w-4 h-4 text-purple-600 transition-transform duration-300 ${open ? 'rotate-180' : ''
+                                className={`w-4 h-4 text-fuchsia-400 transition-transform duration-300 ${open ? "rotate-180" : ""
                                     }`}
                             />
-                        </button>
+                        </motion.button>
 
                         {/* Dropdown Menu */}
-                        {open && (
-                            <div className="absolute right-0 mt-3 w-48 bg-white border border-purple-200 rounded-lg shadow-md z-50">
-                                <ul className="py-2 text-sm text-purple-700">
-                                    <li>
-                                        <Link to={'/Dashboard/profile'}>
-                                            <button className="flex items-center w-full px-4 py-2 hover:bg-purple-100 rounded-lg transition">
-                                                <User className="w-4 h-4 mr-2" /> Profile
+                        <AnimatePresence>
+                            {open && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute right-0 mt-3 w-52 bg-gradient-to-b from-[#1b1b2e]/95 to-[#141428]/95 border border-fuchsia-800/40 rounded-xl shadow-[0_0_15px_rgba(147,51,234,0.3)] overflow-hidden backdrop-blur-xl"
+                                >
+                                    <ul className="py-2 text-sm text-fuchsia-100">
+                                        <li>
+                                            <Link to={"/Dashboard/profile"}>
+                                                <button className="flex items-center w-full px-4 py-2 hover:bg-fuchsia-500/20 transition">
+                                                    <User className="w-4 h-4 mr-2" /> Profile
+                                                </button>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <button className="flex items-center w-full px-4 py-2 hover:bg-fuchsia-500/20 transition">
+                                                <Settings className="w-4 h-4 mr-2" /> Settings
                                             </button>
-                                        </Link>
-
-                                    </li>
-                                    <li>
-                                        <button className="flex items-center w-full px-4 py-2 hover:bg-purple-100 rounded-lg transition">
-                                            <Settings className="w-4 h-4 mr-2" /> Settings
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button
-                                            onClick={logout}
-                                            className="flex items-center w-full px-4 py-2 hover:bg-purple-100 rounded-lg transition text-red-600"
-                                        >
-                                            <LogOut className="w-4 h-4 mr-2" /> Logout
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        )}
+                                        </li>
+                                        <li>
+                                            <button
+                                                onClick={logout}
+                                                className="flex items-center w-full px-4 py-2 hover:bg-red-500/30 transition text-red-400"
+                                            >
+                                                <LogOut className="w-4 h-4 mr-2" /> Logout
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
-        </header>
-    )
-}
+        </motion.header>
+    );
+};
 
-export default DashNav
+export default DashNav;

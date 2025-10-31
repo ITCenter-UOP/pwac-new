@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import DashSide from '../component/Dashboard/DashSide'
 import { Outlet } from 'react-router-dom'
-import DashNav from '../component/Navs/DashNav'
-import DashFooter from '../component/Footers/DashFooter'
+import DashNav from '../component/Dashboard/DashNav'
+import DashFooter from '../component/Dashboard/Dashfooter'
 import { MdOutlineClose } from 'react-icons/md'
 import { TiThMenu } from 'react-icons/ti'
 
@@ -12,7 +12,7 @@ const Dashboard = () => {
     const headlemenuopen = () => setOpenSide(prev => !prev)
 
     return (
-        <div className="h-screen w-screen overflow-hidden flex bg-gray-100">
+        <div className="h-screen w-screen overflow-hidden flex">
             {/* Sidebar */}
             <aside
                 className={`
