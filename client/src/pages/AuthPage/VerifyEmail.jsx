@@ -59,6 +59,7 @@ const VerifyEmail = () => {
             if (res.data.success === true) {
                 showToast(true, res.data.message);
                 setTimeout(() => navigate('/login'), 2000);
+                localStorage.clear()
             } else {
                 showToast(false, res.data.message);
             }

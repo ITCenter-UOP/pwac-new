@@ -269,11 +269,6 @@ class AuthService {
                         <p style="margin: 4px 0; font-size: 15px;"><strong>🌐 IP Address:</strong> ${metadata.ipAddress}</p>
                     </div>
 
-                    <p style="font-size: 15px; color: #6b7280; margin-top: 18px;">
-                        ⚠️ If this login wasn’t you, reset your password immediately:
-                        <a href="${FRONTEND_URL}/reset-password" style="color: #560606; font-weight: 600;">Reset Password</a>
-                    </p>
-
                     <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;" />
                     <p style="font-size: 15px; color: #475569;">
                         💚 Stay safe and access resources at the Psychological Wellbeing & Assessment Center.
