@@ -17,4 +17,7 @@ router.post('/verify-otp', AuthController.verifyotp)
 
 router.post('/update-password', AuthController.updatePassword)
 
+
+router.post('/update-password-from-dashboard', AuthController.updatePasswordViaDash)
+
 module.exports = router;
