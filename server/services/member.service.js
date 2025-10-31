@@ -10,7 +10,9 @@ const tokenCreator = require("../utils/tokens/generateToken")
 const sendEmail = require("../utils/email/emailTransporter")
 
 const {
-    updatePassviaDashResDTO
+    updatePassviaDashResDTO,
+    updateProfileimageResDTO,
+    getProfileImageResDTO
 } = require("../dtos/member.dto")
 
 
@@ -55,6 +57,68 @@ class MemberService {
 
             return updatePassviaDashResDTO()
         }
+    }
+
+    static async UpdateProfileImage(token, profileimg, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const profileImageUpdate = await ProfileImage.findOneAndUpdate(
+            { user: user._id },
+            {
+                $set: { profileimg: profileimg },
+                $setOnInsert: { user: user._id }
+            },
+            { new: true, upsert: true }
+        );
+
+        if (profileImageUpdate) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                    userAgent: req.headers["user-agent"],
+                    timestamp: new Date(),
+                };
+                await logUserAction(
+                    req,
+                    "profile_image_updated",
+                    `${decoded.email} successfully updated their Profile Image`,
+                    metadata,
+                    user._id
+                );
+            }
+
+            return updateProfileimageResDTO()
+        }
+    }
+
+    static async getmyprofileimg(token) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const profileimg = await ProfileImage.findOne({ user: user._id })
+
+        return getProfileImageResDTO(profileimg)
     }
 }
 

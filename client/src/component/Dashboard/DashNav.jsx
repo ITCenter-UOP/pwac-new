@@ -35,29 +35,29 @@ const DashNav = ({ onMenuClick }) => {
 
     // Fetch profile image
     useEffect(() => {
-        // const fetchmyprofileimage = async () => {
-        //     try {
-        //         const res = await API.get(
-        //             `/member/get-myprofileimage?nocache=${Date.now()}`,
-        //             {
-        //                 headers: {
-        //                     Authorization: `Bearer ${token}`,
-        //                     "Cache-Control": "no-cache",
-        //                     Pragma: "no-cache",
-        //                     Expires: "0",
-        //                 },
-        //             }
-        //         );
-        //         setMyProfileImage(
-        //             Array.isArray(res.data.result) ? res.data.result : [res.data.result]
-        //         );
-        //     } catch (err) {
-        //         console.error("Failed to fetch roles:", err);
-        //         setMyProfileImage([]);
-        //     }
-        // };
+        const fetchmyprofileimage = async () => {
+            try {
+                const res = await API.get(
+                    `/member/get-myprofileimage?nocache=${Date.now()}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Cache-Control": "no-cache",
+                            Pragma: "no-cache",
+                            Expires: "0",
+                        },
+                    }
+                );
+                setMyProfileImage(
+                    Array.isArray(res.data.result) ? res.data.result : [res.data.result]
+                );
+            } catch (err) {
+                console.error("Failed to fetch roles:", err);
+                setMyProfileImage([]);
+            }
+        };
 
-        // fetchmyprofileimage();
+        fetchmyprofileimage();
     }, [token]);
 
     return (
@@ -117,8 +117,8 @@ const DashNav = ({ onMenuClick }) => {
                             <div className="relative">
                                 <img
                                     src={
-                                        MyProfileImage[0]?.profile_image
-                                            ? `${import.meta.env.VITE_APP_API}/uploads/${MyProfileImage[0].profile_image}`
+                                        MyProfileImage[0]?.profileimg
+                                            ? `${import.meta.env.VITE_APP_API_FILES}/uploads/${MyProfileImage[0].profileimg}`
                                             : defultUser
                                     }
                                     alt="User"

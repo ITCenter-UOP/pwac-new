@@ -13,26 +13,26 @@ const Profile = () => {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        // Uncomment to fetch profile image dynamically if needed
-        // const fetchmyprofileimage = async () => {
-        //   try {
-        //     const res = await API.get(`/member/get-myprofileimage?nocache=${Date.now()}`, {
-        //       headers: {
-        //         Authorization: `Bearer ${token}`,
-        //         "Cache-Control": "no-cache",
-        //         Pragma: "no-cache",
-        //         Expires: "0",
-        //       },
-        //     });
-        //     setMyProfileImage(
-        //       Array.isArray(res.data.result) ? res.data.result : [res.data.result]
-        //     );
-        //   } catch (err) {
-        //     console.error("Failed to fetch profile image:", err);
-        //     setMyProfileImage([]);
-        //   }
-        // };
-        // fetchmyprofileimage();
+
+        const fetchmyprofileimage = async () => {
+            try {
+                const res = await API.get(`/member/get-myprofileimage?nocache=${Date.now()}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+                setMyProfileImage(
+                    Array.isArray(res.data.result) ? res.data.result : [res.data.result]
+                );
+            } catch (err) {
+                console.error("Failed to fetch profile image:", err);
+                setMyProfileImage([]);
+            }
+        };
+        fetchmyprofileimage();
     }, [token]);
 
     return (
@@ -47,7 +47,7 @@ const Profile = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/10 via-purple-700/10 to-transparent blur-3xl" />
             </div>
 
-           
+
             {/* Profile Card */}
             <motion.div
                 initial={{ scale: 0.97, opacity: 0 }}
@@ -65,8 +65,8 @@ const Profile = () => {
                         <div className="relative">
                             <img
                                 src={
-                                    MyProfileImage[0]?.profile_image
-                                        ? `${import.meta.env.VITE_APP_API}/uploads/${MyProfileImage[0].profile_image}`
+                                    MyProfileImage[0]?.profileimg
+                                        ? `${import.meta.env.VITE_APP_API_FILES}/uploads/${MyProfileImage[0].profileimg}`
                                         : userpng
                                 }
                                 alt="User"
@@ -79,7 +79,7 @@ const Profile = () => {
                     {/* Info */}
                     <div className="flex flex-col gap-2">
                         <h2 className="text-2xl font-bold text-fuchsia-100 tracking-wide">
-                            {auth?.user?.username || "User"}
+                            {auth?.user?.username || "User"} 
                         </h2>
                         <p className="text-purple-300 text-sm">{auth?.user?.email}</p>
                         <div className="mt-2 inline-block px-4 py-1 text-xs font-semibold text-white bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full shadow-md">
