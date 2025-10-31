@@ -53,8 +53,8 @@ const VerifyEmail = () => {
         setLoading(true);
         try {
             const res = await API.post('/auth/verify-email', values, {
-                headers: { "Content-Type": "application/json" },
-            });
+                headers: { Authorization: `Bearer ${token}` }
+            })
 
             if (res.data.success === true) {
                 showToast(true, res.data.message);
