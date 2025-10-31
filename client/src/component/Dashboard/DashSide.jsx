@@ -11,6 +11,7 @@ import { IoPeople } from "react-icons/io5";
 import { MdEvent, MdLogout } from "react-icons/md";
 import { FiBook } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { Activity } from "lucide-react";
 
 const DashSide = ({ closeSidebar }) => {
     const { auth, logout } = useAuth();
@@ -45,10 +46,10 @@ const DashSide = ({ closeSidebar }) => {
         { name: "Users", icon: <FaUser />, link: "/Dashboard/users" },
         { name: "Appointment", icon: <GrSchedules />, link: "/Dashboard/appointment" },
         { name: "News & Event", icon: <FaNewspaper />, link: "/Dashboard/news-event" },
-        { name: "Team", icon: <IoPeople />, link: "/Dashboard/team" },
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/resources" },
         { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/faq" },
+        { name: "User Activities", icon: <Activity />, link: "/Dashboard/userlogs" },        
     ];
 
     return (

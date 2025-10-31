@@ -12,6 +12,7 @@ import DashHome from '../pages/Dashboard/DashHome'
 import PrivateRoute from './PrivateRoute'
 import Dashboard from '../layouts/Dashboard'
 import DashError from '../component/Errors/DashError'
+import Profile from '../pages/Profile/Profile'
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin']}><Dashboard /></PrivateRoute>}>
                     <Route path='*' element={<PrivateRoute roles={['admin']}><DashError /> </PrivateRoute>} />
                     <Route index element={<PrivateRoute roles={['admin']}><DashHome /> </PrivateRoute>} />
+                    <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user']}><Profile /> </PrivateRoute>} />
                 </Route>
             </Routes>
         </BrowserRouter>
