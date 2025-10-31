@@ -11,10 +11,10 @@ const DefaultButton = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`mt-6 w-auto px-4 py-3 rounded-xl font-semibold text-white shadow-lg transition duration-300
+            className={`w-full bg-[#560606] text-white py-3 rounded-xl font-bold hover:bg-[#3f0303] transition-all shadow-md hover:shadow-lg
                 ${disabled
                     ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-xl transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2'}
+                    : 'bg-gradient-to-r from-[#3f0303] to-[#3f0303] hover:shadow-xl transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#3f0303] focus:ring-offset-2'}
             `}
         >
             {label}
