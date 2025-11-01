@@ -227,7 +227,7 @@ const ManageUser = () => {
                                     </td>
 
                                     <td className="px-6 py-4">
-                                        {u.role ? "user" : "unknown"}
+                                        {u.role.name}
                                     </td>
 
                                     <td
