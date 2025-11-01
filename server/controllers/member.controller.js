@@ -1,6 +1,7 @@
 const {
     updatePassviaDashDTO,
     updateProfileimageDTO,
+    UpdatePersonalInforDTO,
     ErrorResDTO
 } = require("../dtos/member.dto");
 const MemberService = require("../services/member.service");
@@ -73,7 +74,41 @@ const MemberController = {
             res.status(200).json(result)
         }
         catch (err) {
-            res.json({ success: false, error: err.message });
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    updatePersonalInfor: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const {
+                position, address, contact, desc
+            } = req.body
+
+            const updatepinfordto = UpdatePersonalInforDTO(
+                token,
+                address,
+                contact,
+                desc
+            )
+
+            const result = await MemberService.UpdatePersonalInfor(
+                updatepinfordto.token,
+                updatepinfordto.address,
+                updatepinfordto.contact,
+                updatepinfordto.desc,
+                req
+            )
+
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
         }
     }
 
