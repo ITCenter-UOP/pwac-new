@@ -16,6 +16,7 @@ import Profile from '../pages/Profile/Profile'
 import ManageUser from '../pages/Dashboard/Users/ManageUser'
 import UpdateUser from '../pages/Dashboard/Users/UpdateUser'
 import ManageUserLogs from '../pages/Dashboard/UserActivity/ManageUserLogs'
+import ViewOneLog from '../pages/Dashboard/UserActivity/ViewOneLog'
 
 function App() {
     return (
@@ -39,6 +40,7 @@ function App() {
                     <Route path='manage-users' element={<PrivateRoute roles={['admin']}><ManageUser /> </PrivateRoute>} />
                     <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />  
                     <Route path='user-logs' element={<PrivateRoute roles={['admin']}><ManageUserLogs /> </PrivateRoute>} />  
+                    <Route path='view-log/:id' element={<PrivateRoute roles={['admin']}><ViewOneLog /> </PrivateRoute>} />  
                                       
                 </Route>
             </Routes>

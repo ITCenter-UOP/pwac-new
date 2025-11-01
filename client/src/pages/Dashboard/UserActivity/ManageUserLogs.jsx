@@ -158,7 +158,7 @@ const ManageUserLogs = () => {
                                     </td>
 
                                     <td className="px-6 py-4">
-                                        <a href={`/Dashboard/update-user/${u?.user?._id}`}>
+                                        <a href={`/Dashboard/view-log/${u?._id}`}>
                                             <button
                                                 className="px-3 py-1.5 rounded-lg bg-purple-700/30 hover:bg-purple-600/40 
                                                 text-gray-100 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(168,85,247,0.25)]"

@@ -115,7 +115,7 @@ const AdminController = {
         try {
             const userid = req.params.id
 
-            const result = AdminService.oneUserActivitey(userid)
+            const result = await AdminService.oneUserActivitey(userid)
             res.status(200).json(result)
         }
         catch (err) {

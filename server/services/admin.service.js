@@ -216,9 +216,13 @@ class AdminService {
     }
 
     static async oneUserActivitey(userid) {
-        const getoneuserlogs = await UserLogs.findById(userid).populate("user", "-password")
+        const userLogs = await UserLogs.findById(userid)
+            .populate({
+                path: "user",
+                select: "-password"
+            });
 
-        return GetOneUserLogsResDTO(getoneuserlogs)
+        return GetOneUserLogsResDTO(userLogs)
     }
 
 
