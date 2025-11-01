@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { FaUsers } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import DefaultButton from "../../../component/Buttons/DefaultButton";
+import API from "../../../services/api";
 
 const ManageUser = () => {
     const items = [
@@ -11,37 +12,82 @@ const ManageUser = () => {
         { id: 2, name: "Users", icon: <FaUsers />, value: 18 },
     ];
 
-    const users = [
-        {
-            id: 1,
-            username: "john_doe",
-            email: "john@example.com",
-            type: "Admin",
-            status: "Active",
-            verified: true,
-        },
-        {
-            id: 2,
-            username: "lisa_white",
-            email: "lisa@example.com",
-            type: "User",
-            status: "Suspended",
-            verified: false,
-        },
-        {
-            id: 3,
-            username: "mark_silver",
-            email: "mark@example.com",
-            type: "User",
-            status: "Active",
-            verified: true,
-        },
-    ];
+    const [allinterns, setallinterns] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [search, setSearch] = useState("");
+    const [statusFilter, setStatusFilter] = useState("");
+    const [verifiedFilter, setVerifiedFilter] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const usersPerPage = 20;
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        const fetchAllusers = async () => {
+            try {
+                const res = await API.get(`/admin/get-all-users?nocache=${Date.now()}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+                setallinterns(Array.isArray(res.data.result) ? res.data.result : []);
+            } catch (err) {
+                console.error("Failed to fetch interns:", err);
+                setError("Could not load users");
+                setallinterns([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAllusers();
+    }, [token]);
+
+    // 🧠 Filter + Search logic
+    const filteredUsers = useMemo(() => {
+        return allinterns.filter((item) => {
+            const user = item.user || {};
+            const matchesSearch =
+                user.username?.toLowerCase().includes(search.toLowerCase()) ||
+                user.email?.toLowerCase().includes(search.toLowerCase());
+
+            const matchesStatus =
+                statusFilter === "" || String(user.isActive) === statusFilter;
+
+            const matchesVerified =
+                verifiedFilter === "" || String(user.isEmailVerified) === verifiedFilter;
+
+            return matchesSearch && matchesStatus && matchesVerified;
+        });
+    }, [allinterns, search, statusFilter, verifiedFilter]);
+
+    // Pagination
+    const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+    const paginatedUsers = filteredUsers.slice(
+        (currentPage - 1) * usersPerPage,
+        currentPage * usersPerPage
+    );
+
+    if (loading)
+        return (
+            <div className="text-center text-fuchsia-200 mt-10 text-lg animate-pulse">
+                Loading users...
+            </div>
+        );
+
+    if (error)
+        return (
+            <div className="text-center text-red-400 mt-10 text-lg">{error}</div>
+        );
 
     return (
         <div className="mt-4">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-black mb-6 tracking-wide">
+            <h2 className="text-2xl font-bold text-fuchsia-100 mb-6 tracking-wide">
                 User Management
             </h2>
 
@@ -58,20 +104,15 @@ const ManageUser = () => {
                             boxShadow: "0 0 25px rgba(217,70,239,0.4)",
                         }}
                         className="relative rounded-2xl p-6 border border-fuchsia-800/40 
-              bg-gradient-to-br from-[#111122]/90 via-[#18182e]/80 to-[#0f0f1f]/90 
-              shadow-[0_0_20px_rgba(147,51,234,0.15)] hover:border-fuchsia-500/60 
-              transition-all duration-300 backdrop-blur-2xl cursor-pointer"
+                       bg-gradient-to-br from-[#111122]/90 via-[#18182e]/80 to-[#0f0f1f]/90 
+                       shadow-[0_0_20px_rgba(147,51,234,0.15)] hover:border-fuchsia-500/60 
+                       transition-all duration-300 backdrop-blur-2xl cursor-pointer"
                     >
-                        {/* Glow overlay */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-600/10 via-purple-700/10 to-transparent rounded-2xl pointer-events-none" />
-
-                        {/* Icon */}
                         <div className="text-4xl text-fuchsia-400 mb-3">{item.icon}</div>
-
-                        {/* Name */}
-                        <h3 className="text-lg font-semibold text-fuchsia-100 mb-1">{item.name}</h3>
-
-                        {/* Value */}
+                        <h3 className="text-lg font-semibold text-fuchsia-100 mb-1">
+                            {item.name}
+                        </h3>
                         <p className="text-fuchsia-300 text-sm font-medium tracking-wide">
                             <CountUp end={item.value} duration={3} /> total
                         </p>
@@ -87,6 +128,40 @@ const ManageUser = () => {
                     onClick={() => console.log("Open create admin modal")}
                     className="!bg-gradient-to-r !from-fuchsia-600 !to-purple-600 hover:shadow-[0_0_25px_rgba(217,70,239,0.6)] transition-all duration-300"
                 />
+            </div>
+
+            {/* Filters */}
+            <div className="mb-8 flex flex-wrap items-center gap-4">
+                {/* Search */}
+                <input
+                    type="text"
+                    placeholder="Search by username or email..."
+                    className="px-4 py-2 rounded-lg bg-[#18182e] border border-fuchsia-700/50 text-fuchsia-100 placeholder-fuchsia-400/60 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+
+                {/* Status Filter */}
+                <select
+                    className="px-4 py-2 rounded-lg bg-[#18182e] border border-fuchsia-700/50 text-fuchsia-100 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                >
+                    <option value="">All Status</option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+
+                {/* Verified Filter */}
+                <select
+                    className="px-4 py-2 rounded-lg bg-[#18182e] border border-fuchsia-700/50 text-fuchsia-100 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+                    value={verifiedFilter}
+                    onChange={(e) => setVerifiedFilter(e.target.value)}
+                >
+                    <option value="">All Verification</option>
+                    <option value="true">Verified</option>
+                    <option value="false">Not Verified</option>
+                </select>
             </div>
 
             {/* Users Table */}
@@ -110,48 +185,99 @@ const ManageUser = () => {
                     </thead>
 
                     <tbody>
-                        {users.map((user, index) => (
-                            <motion.tr
-                                key={user.id}
-                                initial={{ opacity: 0, y: 5 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.05 }}
-                                whileHover={{
-                                    backgroundColor: "rgba(217,70,239,0.1)",
-                                    boxShadow: "0 0 10px rgba(217,70,239,0.2)",
-                                }}
-                                className="border-t border-fuchsia-800/20 hover:backdrop-blur-xl transition-all duration-300"
-                            >
-                                <td className="px-6 py-4">{user.id}</td>
-                                <td className="px-6 py-4 font-semibold text-fuchsia-200">{user.username}</td>
-                                <td className="px-6 py-4 text-fuchsia-300">{user.email}</td>
-                                <td className="px-6 py-4">{user.type}</td>
-                                <td
-                                    className={`px-6 py-4 font-medium ${user.status === "Active" ? "text-green-400" : "text-red-400"
-                                        }`}
-                                >
-                                    {user.status}
-                                </td>
-                                <td
-                                    className={`px-6 py-4 font-medium ${user.verified ? "text-emerald-400" : "text-amber-400"
-                                        }`}
-                                >
-                                    {user.verified ? "Yes" : "No"}
-                                </td>
-                                <td className="px-6 py-4">
-                                    <button
-                                        onClick={() => console.log("Edit user", user.username)}
-                                        className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
-                      text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
+                        {paginatedUsers.length > 0 ? (
+                            paginatedUsers.map((item, index) => {
+                                const user = item.user || {};
+                                return (
+                                    <motion.tr
+                                        key={user._id || index}
+                                        initial={{ opacity: 0, y: 5 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.03 }}
+                                        whileHover={{
+                                            backgroundColor: "rgba(217,70,239,0.1)",
+                                            boxShadow: "0 0 10px rgba(217,70,239,0.2)",
+                                        }}
+                                        className="border-t border-fuchsia-800/20 hover:backdrop-blur-xl transition-all duration-300"
                                     >
-                                        Edit
-                                    </button>
+                                        <td className="px-6 py-4">
+                                            {index + 1 + (currentPage - 1) * usersPerPage}
+                                        </td>
+                                        <td className="px-6 py-4 font-semibold text-fuchsia-200">
+                                            {user.username}
+                                        </td>
+                                        <td className="px-6 py-4 text-fuchsia-300">
+                                            {user.email}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {user.role ? "user" : "unknown"}
+                                        </td>
+                                        <td
+                                            className={`px-6 py-4 font-medium ${user.isActive
+                                                    ? "text-green-400"
+                                                    : "text-red-400"
+                                                }`}
+                                        >
+                                            {user.isActive ? "Active" : "Inactive"}
+                                        </td>
+                                        <td
+                                            className={`px-6 py-4 font-medium ${user.isEmailVerified
+                                                    ? "text-emerald-400"
+                                                    : "text-amber-400"
+                                                }`}
+                                        >
+                                            {user.isEmailVerified ? "Yes" : "No"}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <button
+                                                onClick={() =>
+                                                    console.log("Edit user", user.username)
+                                                }
+                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                                text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
+                                            >
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </motion.tr>
+                                );
+                            })
+                        ) : (
+                            <tr>
+                                <td
+                                    colSpan="7"
+                                    className="text-center py-6 text-fuchsia-400"
+                                >
+                                    No users found
                                 </td>
-                            </motion.tr>
-                        ))}
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </motion.div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <div className="flex justify-center mt-6 gap-2">
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((p) => p - 1)}
+                        className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 disabled:opacity-50 text-fuchsia-100 text-xs"
+                    >
+                        Prev
+                    </button>
+                    <span className="px-4 py-1.5 text-fuchsia-300 text-sm">
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage((p) => p + 1)}
+                        className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 disabled:opacity-50 text-fuchsia-100 text-xs"
+                    >
+                        Next
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
