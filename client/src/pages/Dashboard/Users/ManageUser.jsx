@@ -11,10 +11,6 @@ import { useAuth } from "../../../context/AuthContext";
 const ManageUser = () => {
     const { auth } = useAuth();
 
-    const items = [
-        { id: 1, name: "Administrative Users", icon: <MdAdminPanelSettings />, value: 50 },
-        { id: 2, name: "Users", icon: <FaUsers />, value: 18 },
-    ];
 
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -55,6 +51,15 @@ const ManageUser = () => {
 
         fetchAllUsers();
     }, [token]);
+
+    const adminCount = users.filter(u => u.role?.name?.toLowerCase() === "admin").length;
+    const userCount = users.filter(u => u.role?.name?.toLowerCase() === "user").length;
+
+    const items = [
+        { id: 1, name: "Admins", icon: <MdAdminPanelSettings />, value: adminCount },
+        { id: 2, name: "Staff", icon: <MdAdminPanelSettings />, value: adminCount },        
+        { id: 3, name: "Users", icon: <FaUsers />, value: userCount },
+    ];
 
     // 🔍 Search + Filter Logic
     const filteredUsers = useMemo(() => {
