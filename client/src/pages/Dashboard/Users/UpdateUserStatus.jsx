@@ -41,7 +41,7 @@ const UpdateUserStatus = ({ userid }) => {
 
             const res = await API.post(
                 `/admin/update-status-user/${userid}`,
-                { isActive: values.status === true },
+                { isActive: values.status === "true" },
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }

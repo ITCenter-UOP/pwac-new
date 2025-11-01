@@ -13,6 +13,9 @@ const DashHome = () => {
         return () => clearInterval(interval);
     }, []);
 
+
+
+
     return (
         <div className="p-6">
             <motion.div

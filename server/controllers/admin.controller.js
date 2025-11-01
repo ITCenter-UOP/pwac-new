@@ -2,6 +2,7 @@ const AdminService = require("../services/admin.service")
 const {
     GetOneUserDTO,
     UpdateUserRoleDTO,
+    UpdateUserStatusDTO,
     ErrorResDTO
 } = require('../dtos/admin.dto')
 
@@ -58,7 +59,41 @@ const AdminController = {
                 req
             )
 
-            res.status(200).json(result)           
+            res.status(200).json(result)
+
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    updateUserStatus: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const {
+                isActive
+            } = req.body
+
+            const userid = req.params.id
+
+            const userstatusUpdatedto = UpdateUserStatusDTO(
+                token,
+                userid,
+                isActive
+            )
+
+            const result = await AdminService.UpdateUserStatus(
+                userstatusUpdatedto.token,
+                userstatusUpdatedto.userid,
+                userstatusUpdatedto.isActive,
+                req
+            )
+
+            res.status(200).json(result)
 
         }
         catch (err) {

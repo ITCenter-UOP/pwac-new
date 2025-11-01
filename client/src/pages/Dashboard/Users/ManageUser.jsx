@@ -53,11 +53,12 @@ const ManageUser = () => {
     }, [token]);
 
     const adminCount = users.filter(u => u.role?.name?.toLowerCase() === "admin").length;
+    const staffCount = users.filter(u => u.role?.name?.toLowerCase() === "staff").length;    
     const userCount = users.filter(u => u.role?.name?.toLowerCase() === "user").length;
 
     const items = [
         { id: 1, name: "Admins", icon: <MdAdminPanelSettings />, value: adminCount },
-        { id: 2, name: "Staff", icon: <MdAdminPanelSettings />, value: adminCount },        
+        { id: 2, name: "Staff", icon: <MdAdminPanelSettings />, value: staffCount },        
         { id: 3, name: "Users", icon: <FaUsers />, value: userCount },
     ];
 
@@ -133,15 +134,6 @@ const ManageUser = () => {
                 ))}
             </div>
 
-            {/* Button Section */}
-            <div className="flex justify-start mb-8">
-                <DefaultButton
-                    type="button"
-                    label="Create New Administrative User"
-                    onClick={() => console.log("Open create admin modal")}
-                    className="!bg-gradient-to-r !from-fuchsia-600 !to-purple-600 hover:shadow-[0_0_25px_rgba(217,70,239,0.6)] transition-all duration-300"
-                />
-            </div>
 
             {/* Filters */}
             <div className="mb-8 flex flex-wrap items-center gap-4">

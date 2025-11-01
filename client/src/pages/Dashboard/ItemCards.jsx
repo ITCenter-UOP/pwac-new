@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     FaUsers,
     FaNewspaper,
@@ -10,13 +10,53 @@ import { MdEvent } from "react-icons/md";
 import { FiBook } from "react-icons/fi";
 import { motion } from "framer-motion";
 import CountUp from 'react-countup'
+import API from "../../services/api";
 
 const ItemCards = () => {
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        const fetchAllUsers = async () => {
+            try {
+                const res = await API.get(`/admin/get-all-users?nocache=${Date.now()}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setUsers(res.data.result);
+                } else {
+                    setUsers([]);
+                }
+            } catch (err) {
+                console.error("Failed to fetch users:", err);
+                setError("Could not load users");
+                setUsers([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAllUsers();
+    }, [token]);
+
+    const adminCount = users.filter(u => u.role?.name?.toLowerCase() === "admin").length;
+    const staffCount = users.filter(u => u.role?.name?.toLowerCase() === "staff").length;
+    const userCount = users.filter(u => u.role?.name?.toLowerCase() === "user").length;
+
     const items = [
-        { id: 1, name: "Users", icon: <FaUsers />, value: 50 },
+        { id: 1, name: "Users", icon: <FaUsers />, value: userCount },
         { id: 2, name: "Appointments", icon: <GrSchedules />, value: 18 },
         { id: 3, name: "News & Events", icon: <FaNewspaper />, value: 12 },
-        { id: 4, name: "Team", icon: <IoPeople />, value: 9 },
+        { id: 4, name: "Team", icon: <IoPeople />, value: adminCount + staffCount },
         { id: 5, name: "Workshops", icon: <MdEvent />, value: 4 },
         { id: 6, name: "Resources", icon: <FiBook />, value: 22 },
         { id: 7, name: "FAQs", icon: <FaQuestion />, value: 15 },
@@ -54,7 +94,7 @@ const ItemCards = () => {
 
                         {/* Value */}
                         <p className="text-fuchsia-300 text-sm font-medium tracking-wide">
-                            <CountUp end={item.value} duration={5}/> total
+                            <CountUp end={item.value} duration={5} /> total
                         </p>
                     </motion.div>
                 ))}
