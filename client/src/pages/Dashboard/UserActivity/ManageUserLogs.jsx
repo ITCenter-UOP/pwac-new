@@ -41,15 +41,21 @@ const ManageUserLogs = () => {
         fetchAllLogs();
     }, [token]);
 
-    // 🔍 Filtered logs based on email search
-    const filteredLogs = useMemo(() => {
-        return userlogs.filter((u) =>
-            u?.user?.email?.toLowerCase().includes(search.toLowerCase())
-        );
-    }, [userlogs, search]);
+    const normalizedSearch = useMemo(() => search.trim().toLowerCase(), [search]);
 
-    // 🧮 Pagination
-    const totalPages = Math.ceil(filteredLogs.length / usersPerPage);
+    const filteredLogs = useMemo(() => {
+        if (!normalizedSearch) return userlogs;
+        return userlogs.filter((u) => {
+            const email = (u?.user?.email || "").toString().toLowerCase();
+            return email.includes(normalizedSearch);
+        });
+    }, [userlogs, normalizedSearch]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [normalizedSearch]);
+
+    const totalPages = Math.ceil(filteredLogs.length / usersPerPage) || 1;
     const startIndex = (currentPage - 1) * usersPerPage;
     const paginatedLogs = filteredLogs.slice(startIndex, startIndex + usersPerPage);
 
@@ -94,28 +100,19 @@ const ManageUserLogs = () => {
                     <tbody>
                         {loading ? (
                             <tr>
-                                <td
-                                    colSpan="6"
-                                    className="text-center text-gray-400 py-6"
-                                >
+                                <td colSpan="6" className="text-center text-gray-400 py-6">
                                     Loading user logs...
                                 </td>
                             </tr>
                         ) : error ? (
                             <tr>
-                                <td
-                                    colSpan="6"
-                                    className="text-center text-red-500 py-6"
-                                >
+                                <td colSpan="6" className="text-center text-red-500 py-6">
                                     {error}
                                 </td>
                             </tr>
                         ) : paginatedLogs.length === 0 ? (
                             <tr>
-                                <td
-                                    colSpan="6"
-                                    className="text-center text-gray-400 py-6"
-                                >
+                                <td colSpan="6" className="text-center text-gray-400 py-6">
                                     No user logs found
                                 </td>
                             </tr>
@@ -138,17 +135,13 @@ const ManageUserLogs = () => {
                                         {u?.user?.username || "—"}
                                     </td>
 
-                                    <td className="px-6 py-4 text-gray-300">
-                                        {u?.user?.email || "—"}
-                                    </td>
+                                    <td className="px-6 py-4 text-gray-300">{u?.user?.email || "—"}</td>
 
-                                    <td className="px-6 py-4 text-gray-200">
-                                        {u.action || "—"}
-                                    </td>
+                                    <td className="px-6 py-4 text-gray-200">{u.action || "—"}</td>
 
                                     <td className="px-6 py-4 text-gray-400">
                                         {(() => {
-                                            const dateObj = new Date(u.createdAt);
+                                            const dateObj = new Date(u?.createdAt || Date.now());
                                             const date = dateObj.toLocaleDateString("en-GB");
                                             const time = dateObj.toLocaleTimeString("en-GB", {
                                                 hour12: false,
@@ -159,10 +152,7 @@ const ManageUserLogs = () => {
 
                                     <td className="px-6 py-4">
                                         <a href={`/Dashboard/view-log/${u?._id}`}>
-                                            <button
-                                                className="px-3 py-1.5 rounded-lg bg-purple-700/30 hover:bg-purple-600/40 
-                                                text-gray-100 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(168,85,247,0.25)]"
-                                            >
+                                            <button className="px-3 py-1.5 rounded-lg bg-purple-700/30 hover:bg-purple-600/40 text-gray-100 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(168,85,247,0.25)]">
                                                 View
                                             </button>
                                         </a>
@@ -174,7 +164,6 @@ const ManageUserLogs = () => {
                 </table>
             </motion.div>
 
-            {/* Pagination controls */}
             {!loading && filteredLogs.length > usersPerPage && (
                 <div className="flex justify-center items-center gap-2 mt-5">
                     <button
@@ -184,7 +173,7 @@ const ManageUserLogs = () => {
                     >
                         Prev
                     </button>
-                    <span className="text-black text-sm">
+                    <span className="text-gray-200 text-sm">
                         Page {currentPage} of {totalPages}
                     </span>
                     <button

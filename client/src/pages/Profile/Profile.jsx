@@ -7,6 +7,7 @@ import UpdatePass from "./UpdatePass";
 import UpdateProfileImage from "./UpdateProfileImage";
 import { motion } from "framer-motion";
 import UpdatePersanolInfor from "./UpdatePersanolInfor";
+import ViewMyPersonalInfor from "./ViewMyPersonalInfor";
 
 const Profile = () => {
     const { auth } = useAuth();
@@ -49,6 +50,8 @@ const Profile = () => {
             </div>
 
 
+
+
             {/* Profile Card */}
             <motion.div
                 initial={{ scale: 0.97, opacity: 0 }}
@@ -88,6 +91,18 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
+            </motion.div>
+
+            <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="bg-gradient-to-br from-[#1b1b2d]/80 to-[#2a1b36]/80 border border-purple-700/40 rounded-3xl p-6 shadow-[0_0_25px_rgba(147,51,234,0.25)] backdrop-blur-xl"
+            >
+                <h3 className="text-lg font-semibold text-white mb-4 tracking-wide">
+                    My Profile Information
+                </h3>
+                <div className="border-t border-purple-800/30 mb-4"></div>
+                <ViewMyPersonalInfor />
             </motion.div>
 
             {/* Update Sections */}

@@ -196,6 +196,11 @@ class MemberService {
 
         return GetMyPersonlInforResDTO(getpersolinfor)
     }
+
+    static async GetAllUserPersonInfor () {
+        const alluserpdata= await PersonalInfor.find()
+        return GetAllUserPersonlInforResDTO(alluserpdata)
+    }
 }
 
 module.exports = MemberService

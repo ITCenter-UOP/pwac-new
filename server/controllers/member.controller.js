@@ -112,6 +112,33 @@ const MemberController = {
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    getmypersonldata: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const result = await MemberService.GetMyPersonlInfor(token)
+
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    getalluserpersonaldata: async(req, res) => {
+        try{
+            const result = await MemberService.GetAllUserPersonInfor()
+            res.status(200).json(result)
+        }
+        catch(err){
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 
 

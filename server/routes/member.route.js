@@ -14,6 +14,6 @@ router.get('/get-myprofileimage', auth, MemberController.getmyprofileimge)
 
 router.post('/update-personal-infor', auth, MemberController.updatePersonalInfor)
 
-router.get('/get-personal-infor', auth)
+router.get('/get-personal-infor', auth, MemberController.getmypersonldata)
 
 module.exports = router;
