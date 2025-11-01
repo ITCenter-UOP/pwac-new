@@ -10,14 +10,14 @@ const NEWSSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    description: { 
+    description: [{ 
         type: String, 
         required: true 
-    },
-    imageUrl: { 
+    }],
+    imageUrl: [{ 
         type: String, 
         required: true 
-    }
+    }]
 }, { timestamps: true });
 
 const NEWS = mongoose.model('NEWS', NEWSSchema);
