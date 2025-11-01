@@ -44,7 +44,7 @@ const Login = () => {
                 const decoded = jwtDecode(res.data.token);
                 const role = decoded?.role;
 
-                if (role === "admin") {
+                if (role === "admin" || role === "staff") {
                     setTimeout(() => navigate('/Dashboard'), 2000);
                 } else if (role === "user") {
                     setTimeout(() => navigate('/my-account'), 2000);

@@ -31,13 +31,12 @@ function App() {
                     <Route path='update-password' element={<UpdatePassword />} />
                 </Route>
 
-                <Route path='/Dashboard' element={<PrivateRoute roles={['admin']}><Dashboard /></PrivateRoute>}>
-                    <Route path='*' element={<PrivateRoute roles={['admin']}><DashError /> </PrivateRoute>} />
-                    <Route index element={<PrivateRoute roles={['admin']}><DashHome /> </PrivateRoute>} />
-                    <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user']}><Profile /> </PrivateRoute>} />
+                <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
+                    <Route path='*' element={<PrivateRoute roles={['admin', 'staff']}><DashError /> </PrivateRoute>} />
+                    <Route index element={<PrivateRoute roles={['admin', 'staff']}><DashHome /> </PrivateRoute>} />
+                    <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user', 'staff']}><Profile /> </PrivateRoute>} />
                     <Route path='manage-users' element={<PrivateRoute roles={['admin']}><ManageUser /> </PrivateRoute>} />
-                    <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />
-                    
+                    <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />                    
                 </Route>
             </Routes>
         </BrowserRouter>

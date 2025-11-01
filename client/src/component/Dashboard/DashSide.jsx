@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import defultImg from "../../assets/user.png";
 import uoplogo from "../../assets/uoplogo.png";
 import API from "../../services/api";
@@ -15,9 +15,10 @@ import { Activity } from "lucide-react";
 
 const DashSide = ({ closeSidebar }) => {
     const { auth, logout } = useAuth();
+    const navigate = useNavigate();
     const [MyProfileImage, setMyProfileImage] = useState([]);
-    const token = localStorage.getItem("token");
     const [collapsed, setCollapsed] = useState(false);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const fetchMyProfileImage = async () => {
@@ -38,9 +39,10 @@ const DashSide = ({ closeSidebar }) => {
                 setMyProfileImage([]);
             }
         };
-        fetchMyProfileImage();
+        if (token) fetchMyProfileImage();
     }, [token]);
 
+    // Base navigation items
     const navitem = [
         { name: "Dashboard", icon: <BiSolidDashboard />, link: "/Dashboard" },
         { name: "Users", icon: <FaUser />, link: "/Dashboard/manage-users" },
@@ -49,8 +51,13 @@ const DashSide = ({ closeSidebar }) => {
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/resources" },
         { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/faq" },
-        { name: "User Activities", icon: <Activity />, link: "/Dashboard/userlogs" },        
+        { name: "User Activities", icon: <Activity />, link: "/Dashboard/userlogs" },
     ];
+
+    // Filter nav items — hide "Users" for staff role
+    const filteredNavItems = auth?.role === "staff"
+        ? navitem.filter((item) => item.name !== "Users")
+        : navitem;
 
     return (
         <motion.aside
@@ -116,7 +123,7 @@ const DashSide = ({ closeSidebar }) => {
 
             {/* Navigation */}
             <nav className="flex-1 px-3 mt-4 space-y-1 overflow-y-auto custom-scrollbar">
-                {navitem.map((item, index) => (
+                {filteredNavItems.map((item, index) => (
                     <NavLink
                         key={index}
                         to={item.link}
@@ -143,7 +150,6 @@ const DashSide = ({ closeSidebar }) => {
                                 {item.name}
                             </motion.span>
                         )}
-                        {/* Neon hover glow */}
                         <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 group-hover:bg-gradient-to-r from-fuchsia-400 to-purple-500 blur-md transition-all duration-500" />
                     </NavLink>
                 ))}
@@ -152,7 +158,7 @@ const DashSide = ({ closeSidebar }) => {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={logout}
+                    onClick={() => logout(navigate)}
                     className="flex items-center gap-3 w-full px-4 py-3 mt-6 text-red-400 hover:text-white hover:bg-red-500/30 rounded-xl font-medium transition-all duration-300"
                 >
                     <MdLogout className="text-xl" />
