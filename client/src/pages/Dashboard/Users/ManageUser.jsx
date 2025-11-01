@@ -53,12 +53,12 @@ const ManageUser = () => {
     }, [token]);
 
     const adminCount = users.filter(u => u.role?.name?.toLowerCase() === "admin").length;
-    const staffCount = users.filter(u => u.role?.name?.toLowerCase() === "staff").length;    
+    const staffCount = users.filter(u => u.role?.name?.toLowerCase() === "staff").length;
     const userCount = users.filter(u => u.role?.name?.toLowerCase() === "user").length;
 
     const items = [
         { id: 1, name: "Admins", icon: <MdAdminPanelSettings />, value: adminCount },
-        { id: 2, name: "Staff", icon: <MdAdminPanelSettings />, value: staffCount },        
+        { id: 2, name: "Staff", icon: <MdAdminPanelSettings />, value: staffCount },
         { id: 3, name: "Users", icon: <FaUsers />, value: userCount },
     ];
 
@@ -245,7 +245,15 @@ const ManageUser = () => {
                                         {u.isEmailVerified ? "Yes" : "No"}
                                     </td>
 
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 flex">
+                                        <a href={`/Dashboard/personl-info/${u._id}`} className="mr-2">
+                                            <button
+                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                                text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
+                                            >
+                                                Personal Info
+                                            </button>
+                                        </a>
                                         <a href={`/Dashboard/update-user/${u._id}`}>
                                             <button
                                                 className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
