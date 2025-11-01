@@ -9,4 +9,6 @@ router.get('/get-all-users', auth, checkPermission(['user:get-all']), AdminContr
 
 router.get('/get-one-user/:id', auth, checkPermission(['user:get-one-user']), AdminController.getoneuser)
 
+router.post('/update-role-user/:id', auth, checkPermission(['user:update-role']), AdminController.updateuserRole)
+
 module.exports = router;

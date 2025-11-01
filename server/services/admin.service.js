@@ -3,11 +3,14 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 
+const logUserAction = require('../utils/others/logUserAction')
+
 const User = require("../models/user.model");
 const profileImage = require("../models/profileimage.model");
 const {
     GetAllUsersResDTO,
-    GetOneUserResDTO
+    GetOneUserResDTO,
+    UpdateUserRoleResDTO
 } = require("../dtos/admin.dto");
 
 class AdminService {
@@ -113,6 +116,46 @@ class AdminService {
         } catch (err) {
             console.error("Error fetching user with profile image:", err);
             throw new Error("Failed to fetch user");
+        }
+    }
+
+    static async UpdateUserRole(token, userid, roleid, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email });
+        if (!user) throw new Error("User not found");
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userid,
+            { $set: { role: roleid } },
+            { new: true }
+        );
+
+        if (updatedUser) {
+            if (req) {
+                const metadata = {
+                    ipAddress: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                    userAgent: req.headers["user-agent"],
+                    timestamp: new Date(),
+                };
+                await logUserAction(
+                    req,
+                    "profile_image_updated",
+                    `${decoded.email} successfully updated their Profile Image`,
+                    metadata,
+                    user._id
+                );
+            }
+
+            return UpdateUserRoleResDTO()
         }
     }
 }
