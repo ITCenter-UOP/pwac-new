@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import DefaultButton from "../../../component/Buttons/DefaultButton";
 import API from "../../../services/api";
+import defultUser from "../../../assets/user.png";
 
 const ManageUser = () => {
     const items = [
@@ -12,7 +13,7 @@ const ManageUser = () => {
         { id: 2, name: "Users", icon: <FaUsers />, value: 18 },
     ];
 
-    const [allinterns, setallinterns] = useState([]);
+    const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState("");
@@ -24,7 +25,7 @@ const ManageUser = () => {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        const fetchAllusers = async () => {
+        const fetchAllUsers = async () => {
             try {
                 const res = await API.get(`/admin/get-all-users?nocache=${Date.now()}`, {
                     headers: {
@@ -34,22 +35,27 @@ const ManageUser = () => {
                         Expires: "0",
                     },
                 });
-                setallinterns(Array.isArray(res.data.result) ? res.data.result : []);
+
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setUsers(res.data.result);
+                } else {
+                    setUsers([]);
+                }
             } catch (err) {
-                console.error("Failed to fetch interns:", err);
+                console.error("Failed to fetch users:", err);
                 setError("Could not load users");
-                setallinterns([]);
+                setUsers([]);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchAllusers();
+        fetchAllUsers();
     }, [token]);
 
-    // 🧠 Filter + Search logic
+    // 🔍 Filter + Search logic
     const filteredUsers = useMemo(() => {
-        return allinterns.filter((item) => {
+        return users.filter((item) => {
             const user = item.user || {};
             const matchesSearch =
                 user.username?.toLowerCase().includes(search.toLowerCase()) ||
@@ -63,9 +69,9 @@ const ManageUser = () => {
 
             return matchesSearch && matchesStatus && matchesVerified;
         });
-    }, [allinterns, search, statusFilter, verifiedFilter]);
+    }, [users, search, statusFilter, verifiedFilter]);
 
-    // Pagination
+    // 📄 Pagination
     const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
     const paginatedUsers = filteredUsers.slice(
         (currentPage - 1) * usersPerPage,
@@ -87,7 +93,7 @@ const ManageUser = () => {
     return (
         <div className="mt-4">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-fuchsia-100 mb-6 tracking-wide">
+            <h2 className="text-2xl font-bold text-black mb-6 tracking-wide">
                 User Management
             </h2>
 
@@ -132,7 +138,6 @@ const ManageUser = () => {
 
             {/* Filters */}
             <div className="mb-8 flex flex-wrap items-center gap-4">
-                {/* Search */}
                 <input
                     type="text"
                     placeholder="Search by username or email..."
@@ -141,7 +146,6 @@ const ManageUser = () => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
 
-                {/* Status Filter */}
                 <select
                     className="px-4 py-2 rounded-lg bg-[#18182e] border border-fuchsia-700/50 text-fuchsia-100 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
                     value={statusFilter}
@@ -152,7 +156,6 @@ const ManageUser = () => {
                     <option value="false">Inactive</option>
                 </select>
 
-                {/* Verified Filter */}
                 <select
                     className="px-4 py-2 rounded-lg bg-[#18182e] border border-fuchsia-700/50 text-fuchsia-100 focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
                     value={verifiedFilter}
@@ -203,41 +206,58 @@ const ManageUser = () => {
                                         <td className="px-6 py-4">
                                             {index + 1 + (currentPage - 1) * usersPerPage}
                                         </td>
+
+                                        {/* Username + Avatar */}
                                         <td className="px-6 py-4 font-semibold text-fuchsia-200">
-                                            {user.username}
+                                            <div className="flex items-center gap-3">
+                                                <img
+                                                    src={
+                                                        item.profileimg
+                                                            ? `${import.meta.env.VITE_APP_API_FILES}/uploads/${item.profileimg}`
+                                                            : defultUser
+                                                    }
+                                                    alt="User"
+                                                    className="h-10 w-10 rounded-full border-2 border-fuchsia-500 object-cover shadow-[0_0_10px_rgba(255,0,255,0.4)]"
+                                                />
+                                                <span>{user.username}</span>
+                                            </div>
                                         </td>
+
                                         <td className="px-6 py-4 text-fuchsia-300">
                                             {user.email}
                                         </td>
+
                                         <td className="px-6 py-4">
                                             {user.role ? "user" : "unknown"}
                                         </td>
+
                                         <td
                                             className={`px-6 py-4 font-medium ${user.isActive
-                                                    ? "text-green-400"
-                                                    : "text-red-400"
+                                                ? "text-green-400"
+                                                : "text-red-400"
                                                 }`}
                                         >
                                             {user.isActive ? "Active" : "Inactive"}
                                         </td>
+
                                         <td
                                             className={`px-6 py-4 font-medium ${user.isEmailVerified
-                                                    ? "text-emerald-400"
-                                                    : "text-amber-400"
+                                                ? "text-emerald-400"
+                                                : "text-amber-400"
                                                 }`}
                                         >
                                             {user.isEmailVerified ? "Yes" : "No"}
                                         </td>
+
                                         <td className="px-6 py-4">
-                                            <button
-                                                onClick={() =>
-                                                    console.log("Edit user", user.username)
-                                                }
-                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                            <a href={`/Dashboard/update-user/${user._id}`}>
+                                                <button
+                                                    className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
                                                 text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
-                                            >
-                                                Edit
-                                            </button>
+                                                >
+                                                    Edit
+                                                </button>
+                                            </a>
                                         </td>
                                     </motion.tr>
                                 );

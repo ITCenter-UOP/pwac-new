@@ -14,6 +14,7 @@ import Dashboard from '../layouts/Dashboard'
 import DashError from '../component/Errors/DashError'
 import Profile from '../pages/Profile/Profile'
 import ManageUser from '../pages/Dashboard/Users/ManageUser'
+import UpdateUser from '../pages/Dashboard/Users/UpdateUser'
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                     <Route index element={<PrivateRoute roles={['admin']}><DashHome /> </PrivateRoute>} />
                     <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user']}><Profile /> </PrivateRoute>} />
                     <Route path='manage-users' element={<PrivateRoute roles={['admin']}><ManageUser /> </PrivateRoute>} />
+                    <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />
                     
                 </Route>
             </Routes>
