@@ -9,7 +9,8 @@ import defultUser from "../../../assets/user.png";
 import { useAuth } from "../../../context/AuthContext";
 
 const ManageUser = () => {
-    const { auth } = useAuth()
+    const { auth } = useAuth();
+
     const items = [
         { id: 1, name: "Administrative Users", icon: <MdAdminPanelSettings />, value: 50 },
         { id: 2, name: "Users", icon: <FaUsers />, value: 18 },
@@ -55,25 +56,24 @@ const ManageUser = () => {
         fetchAllUsers();
     }, [token]);
 
-    // 🔍 Filter + Search logic
+    // 🔍 Search + Filter Logic
     const filteredUsers = useMemo(() => {
-        return users.filter((item) => {
-            const user = item.user || {};
+        return users.filter((u) => {
             const matchesSearch =
-                user.username?.toLowerCase().includes(search.toLowerCase()) ||
-                user.email?.toLowerCase().includes(search.toLowerCase());
+                u.username?.toLowerCase().includes(search.toLowerCase()) ||
+                u.email?.toLowerCase().includes(search.toLowerCase());
 
             const matchesStatus =
-                statusFilter === "" || String(user.isActive) === statusFilter;
+                statusFilter === "" || String(u.isActive) === statusFilter;
 
             const matchesVerified =
-                verifiedFilter === "" || String(user.isEmailVerified) === verifiedFilter;
+                verifiedFilter === "" || String(u.isEmailVerified) === verifiedFilter;
 
             return matchesSearch && matchesStatus && matchesVerified;
         });
     }, [users, search, statusFilter, verifiedFilter]);
 
-    // 📄 Pagination
+    // 📄 Pagination Logic
     const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
     const paginatedUsers = filteredUsers.slice(
         (currentPage - 1) * usersPerPage,
@@ -191,89 +191,81 @@ const ManageUser = () => {
 
                     <tbody>
                         {paginatedUsers.length > 0 ? (
-                            paginatedUsers.map((item, index) => {
-                                const user = item.user || {};
-                                return (
-                                    <motion.tr
-                                        key={user._id || index}
-                                        initial={{ opacity: 0, y: 5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.03 }}
-                                        whileHover={{
-                                            backgroundColor: "rgba(217,70,239,0.1)",
-                                            boxShadow: "0 0 10px rgba(217,70,239,0.2)",
-                                        }}
-                                        className="border-t border-fuchsia-800/20 hover:backdrop-blur-xl transition-all duration-300"
+                            paginatedUsers.map((u, index) => (
+                                <motion.tr
+                                    key={u._id || index}
+                                    initial={{ opacity: 0, y: 5 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.03 }}
+                                    whileHover={{
+                                        backgroundColor: "rgba(217,70,239,0.1)",
+                                        boxShadow: "0 0 10px rgba(217,70,239,0.2)",
+                                    }}
+                                    className="border-t border-fuchsia-800/20 hover:backdrop-blur-xl transition-all duration-300"
+                                >
+                                    <td className="px-6 py-4">
+                                        {index + 1 + (currentPage - 1) * usersPerPage}
+                                    </td>
+
+                                    <td className="px-6 py-4 font-semibold text-fuchsia-200">
+                                        <div className="flex items-center gap-3">
+                                            <img
+                                                src={
+                                                    u.profileImage?.profileimg
+                                                        ? `${import.meta.env.VITE_APP_API_FILES}/uploads/${u.profileImage.profileimg}`
+                                                        : defultUser
+                                                }
+                                                alt="User"
+                                                className="h-10 w-10 rounded-full border-2 border-fuchsia-500 object-cover shadow-[0_0_10px_rgba(255,0,255,0.4)]"
+                                            />
+                                            <span>{u.username}</span>
+                                        </div>
+                                    </td>
+
+                                    <td className="px-6 py-4 text-fuchsia-300">
+                                        {u.email}
+                                    </td>
+
+                                    <td className="px-6 py-4">
+                                        {u.role ? "user" : "unknown"}
+                                    </td>
+
+                                    <td
+                                        className={`px-6 py-4 font-medium ${u.isActive
+                                            ? "text-green-400"
+                                            : "text-red-400"
+                                            }`}
                                     >
-                                        <td className="px-6 py-4">
-                                            {index + 1 + (currentPage - 1) * usersPerPage}
-                                        </td>
+                                        {u.isActive ? "Active" : "Inactive"}
+                                    </td>
 
-                                        {/* Username + Avatar */}
-                                        <td className="px-6 py-4 font-semibold text-fuchsia-200">
-                                            <div className="flex items-center gap-3">
-                                                <img
-                                                    src={
-                                                        item.profileimg
-                                                            ? `${import.meta.env.VITE_APP_API_FILES}/uploads/${item.profileimg}`
-                                                            : defultUser
-                                                    }
-                                                    alt="User"
-                                                    className="h-10 w-10 rounded-full border-2 border-fuchsia-500 object-cover shadow-[0_0_10px_rgba(255,0,255,0.4)]"
-                                                />
-                                                <span>{user.username}</span>
-                                            </div>
-                                        </td>
+                                    <td
+                                        className={`px-6 py-4 font-medium ${u.isEmailVerified
+                                            ? "text-emerald-400"
+                                            : "text-amber-400"
+                                            }`}
+                                    >
+                                        {u.isEmailVerified ? "Yes" : "No"}
+                                    </td>
 
-                                        <td className="px-6 py-4 text-fuchsia-300">
-                                            {user.email}
-                                        </td>
-
-                                        <td className="px-6 py-4">
-                                            {user.role ? "user" : "unknown"}
-                                        </td>
-
-                                        <td
-                                            className={`px-6 py-4 font-medium ${user.isActive
-                                                ? "text-green-400"
-                                                : "text-red-400"
-                                                }`}
-                                        >
-                                            {user.isActive ? "Active" : "Inactive"}
-                                        </td>
-
-                                        <td
-                                            className={`px-6 py-4 font-medium ${user.isEmailVerified
-                                                ? "text-emerald-400"
-                                                : "text-amber-400"
-                                                }`}
-                                        >
-                                            {user.isEmailVerified ? "Yes" : "No"}
-                                        </td>
-
-                                        <td className="px-6 py-4">
-                                            {
-                                                user._id === auth.id ?
-                                                    <div className="">
-                                                        <p className="">You cannot update this Account</p>
-                                                    </div>
-                                                    :
-                                                    <div className="">
-                                                        <a href={`/Dashboard/update-user/${user._id}`}>
-                                                            <button
-                                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                    <td className="px-6 py-4">
+                                        {u._id === auth.id ? (
+                                            <p className="text-xs text-fuchsia-400">
+                                                You cannot update this Account
+                                            </p>
+                                        ) : (
+                                            <a href={`/Dashboard/update-user/${u._id}`}>
+                                                <button
+                                                    className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
                                                 text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
-                                                            >
-                                                                Edit
-                                                            </button>
-                                                        </a>
-                                                    </div>
-                                            }
-
-                                        </td>
-                                    </motion.tr>
-                                );
-                            })
+                                                >
+                                                    Edit
+                                                </button>
+                                            </a>
+                                        )}
+                                    </td>
+                                </motion.tr>
+                            ))
                         ) : (
                             <tr>
                                 <td

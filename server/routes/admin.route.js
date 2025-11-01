@@ -7,4 +7,6 @@ const router = express.Router();
 
 router.get('/get-all-users', auth, checkPermission(['user:get-all']), AdminController.getallusers)
 
+router.get('/get-one-user/:id', auth, checkPermission(['user:get-one-user']), AdminController.getoneuser)
+
 module.exports = router;
