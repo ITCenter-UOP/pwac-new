@@ -125,7 +125,7 @@ class MemberService {
         return getProfileImageResDTO(profileimg)
     }
 
-    static async UpdatePersonalInfor(token, address, contact, desc, req) {
+    static async UpdatePersonalInfor(token, address, contact, desc, expertise, req) {
         let decoded;
         try {
             decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -147,7 +147,8 @@ class MemberService {
                 $set: {
                     address: address,
                     contact: contactArray,
-                    desc: desc
+                    desc: desc,
+                    expertise: expertise
                 }
             },
             { new: true, upsert: true }

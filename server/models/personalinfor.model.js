@@ -6,10 +6,10 @@ const PersonalInforSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    position: {
+    address: {
         type: String,
     },
-    address: {
+    expertise: {
         type: String,
     },
     contact: [{

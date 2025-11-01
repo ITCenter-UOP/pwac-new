@@ -87,14 +87,15 @@ const MemberController = {
             }
 
             const {
-                position, address, contact, desc
+                address, contact, desc, expertise
             } = req.body
 
             const updatepinfordto = UpdatePersonalInforDTO(
                 token,
                 address,
                 contact,
-                desc
+                desc,
+                expertise
             )
 
             const result = await MemberService.UpdatePersonalInfor(
@@ -102,6 +103,7 @@ const MemberController = {
                 updatepinfordto.address,
                 updatepinfordto.contact,
                 updatepinfordto.desc,
+                updatepinfordto.expertise,
                 req
             )
 

@@ -6,7 +6,7 @@ exports.updateProfileimageResDTO = (message = "Profile Image Updated Successfull
 
 exports.getProfileImageResDTO = (result, message="Profile Image Fetched Successfully") => ({ success: true, result, message})
 
-exports.UpdatePersonalInforDTO = (token, address, contact, desc) => ({ token, position, address, contact, desc })
+exports.UpdatePersonalInforDTO = (token, address, contact, desc, expertise) => ({ token, address, contact, desc, expertise })
 exports.UpdatePersonalInforResDTO = (message="Personal Information Updated Successfully") => ({ success: true, message })
 
 // Error 
