@@ -249,20 +249,14 @@ const ManageUser = () => {
                                     </td>
 
                                     <td className="px-6 py-4">
-                                        {u._id === auth.id ? (
-                                            <p className="text-xs text-fuchsia-400">
-                                                You cannot update this Account
-                                            </p>
-                                        ) : (
-                                            <a href={`/Dashboard/update-user/${u._id}`}>
-                                                <button
-                                                    className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                        <a href={`/Dashboard/update-user/${u._id}`}>
+                                            <button
+                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
                                                 text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
-                                                >
-                                                    Edit
-                                                </button>
-                                            </a>
-                                        )}
+                                            >
+                                                Edit
+                                            </button>
+                                        </a>
                                     </td>
                                 </motion.tr>
                             ))

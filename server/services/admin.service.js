@@ -23,15 +23,30 @@ class AdminService {
                     }
                 },
                 {
+                    $lookup: {
+                        from: "roles",
+                        localField: "role",
+                        foreignField: "_id",
+                        as: "role"
+                    }
+                },
+                {
                     $unwind: {
                         path: "$profileImage",
                         preserveNullAndEmptyArrays: true
                     }
                 },
                 {
+                    $unwind: {
+                        path: "$role",
+                        preserveNullAndEmptyArrays: true
+                    }
+                },
+                {
                     $project: {
                         password: 0,
-                        "profileImage.__v": 0
+                        "profileImage.__v": 0,
+                        "role.__v": 0
                     }
                 }
             ]);
@@ -62,15 +77,30 @@ class AdminService {
                     }
                 },
                 {
+                    $lookup: {
+                        from: "roles",
+                        localField: "role",
+                        foreignField: "_id",
+                        as: "role"
+                    }
+                },
+                {
                     $unwind: {
                         path: "$profileImage",
                         preserveNullAndEmptyArrays: true
                     }
                 },
                 {
+                    $unwind: {
+                        path: "$role",
+                        preserveNullAndEmptyArrays: true
+                    }
+                },
+                {
                     $project: {
                         password: 0,
-                        "profileImage.__v": 0
+                        "profileImage.__v": 0,
+                        "role.__v": 0
                     }
                 }
             ]);
@@ -79,13 +109,12 @@ class AdminService {
                 throw new Error("User not found");
             }
 
-            return GetOneUserResDTO(userWithProfile);
+            return GetOneUserResDTO(userWithProfile[0]);
         } catch (err) {
             console.error("Error fetching user with profile image:", err);
             throw new Error("Failed to fetch user");
         }
     }
-
 }
 
 module.exports = AdminService;
