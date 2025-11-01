@@ -6,8 +6,10 @@ import CountUp from "react-countup";
 import DefaultButton from "../../../component/Buttons/DefaultButton";
 import API from "../../../services/api";
 import defultUser from "../../../assets/user.png";
+import { useAuth } from "../../../context/AuthContext";
 
 const ManageUser = () => {
+    const { auth } = useAuth()
     const items = [
         { id: 1, name: "Administrative Users", icon: <MdAdminPanelSettings />, value: 50 },
         { id: 2, name: "Users", icon: <FaUsers />, value: 18 },
@@ -250,14 +252,24 @@ const ManageUser = () => {
                                         </td>
 
                                         <td className="px-6 py-4">
-                                            <a href={`/Dashboard/update-user/${user._id}`}>
-                                                <button
-                                                    className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                            {
+                                                user._id === auth.id ?
+                                                    <div className="">
+                                                        <p className="">You cannot update this Account</p>
+                                                    </div>
+                                                    :
+                                                    <div className="">
+                                                        <a href={`/Dashboard/update-user/${user._id}`}>
+                                                            <button
+                                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
                                                 text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(217,70,239,0.25)]"
-                                                >
-                                                    Edit
-                                                </button>
-                                            </a>
+                                                            >
+                                                                Edit
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                            }
+
                                         </td>
                                     </motion.tr>
                                 );
