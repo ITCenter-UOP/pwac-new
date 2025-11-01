@@ -139,31 +139,39 @@ class MemberService {
         const user = await User.findOne({ email: decoded.email }).populate('role');
         if (!user) throw new Error("User not found");
 
+        const contactArray = Array.isArray(contact) ? contact : [contact];
+
         const updatedPersonalInfo = await PersonalInfor.findOneAndUpdate(
             { user: user._id },
             {
                 $set: {
-                    position: position,
                     address: address,
-                    contact: contact,
+                    contact: contactArray,
                     desc: desc
                 }
             },
             { new: true, upsert: true }
         );
 
-        if(updatedPersonalInfo){
+        if (updatedPersonalInfo) {
             if (req) {
                 const metadata = {
                     ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
                     userAgent: req.headers['user-agent'],
                     timestamp: new Date(),
                 };
-                await logUserAction(req, "update_personal_information", `${decoded.email} Updated Personal Information`, metadata, user._id);
+                await logUserAction(
+                    req,
+                    "update_personal_information",
+                    `${decoded.email} updated personal information`,
+                    metadata,
+                    user._id
+                );
             }
-            
-            return UpdatePersonalInforResDTO()
 
+            return UpdatePersonalInforResDTO();
+        } else {
+            throw new Error("Failed to update personal information.");
         }
     }
 }

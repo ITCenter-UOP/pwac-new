@@ -12,4 +12,6 @@ router.post('/update-profile-image', auth, upload.single('profileImage'), Member
 
 router.get('/get-myprofileimage', auth, MemberController.getmyprofileimge)
 
+router.post('/update-personal-infor', auth, MemberController.updatePersonalInfor)
+
 module.exports = router;
