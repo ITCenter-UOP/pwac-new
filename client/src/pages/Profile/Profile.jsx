@@ -6,6 +6,7 @@ import userpng from "../../assets/user.png";
 import UpdatePass from "./UpdatePass";
 import UpdateProfileImage from "./UpdateProfileImage";
 import { motion } from "framer-motion";
+import UpdatePersanolInfor from "./UpdatePersanolInfor";
 
 const Profile = () => {
     const { auth } = useAuth();
@@ -79,7 +80,7 @@ const Profile = () => {
                     {/* Info */}
                     <div className="flex flex-col gap-2">
                         <h2 className="text-2xl font-bold text-fuchsia-100 tracking-wide">
-                            {auth?.user?.username || "User"} 
+                            {auth?.user?.username || "User"}
                         </h2>
                         <p className="text-purple-300 text-sm">{auth?.user?.email}</p>
                         <div className="mt-2 inline-block px-4 py-1 text-xs font-semibold text-white bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-full shadow-md">
@@ -115,6 +116,18 @@ const Profile = () => {
                     </h3>
                     <div className="border-t border-purple-800/30 mb-4"></div>
                     <UpdateProfileImage />
+                </motion.div>
+
+                <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-gradient-to-br from-[#1b1b2d]/80 to-[#2a1b36]/80 border border-purple-700/40 rounded-3xl p-6 shadow-[0_0_25px_rgba(147,51,234,0.25)] backdrop-blur-xl"
+                >
+                    <h3 className="text-lg font-semibold text-white mb-4 tracking-wide">
+                        Update Personal Information
+                    </h3>
+                    <div className="border-t border-purple-800/30 mb-4"></div>
+                    <UpdatePersanolInfor />
                 </motion.div>
             </div>
         </motion.div>
