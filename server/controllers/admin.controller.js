@@ -99,6 +99,28 @@ const AdminController = {
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    userlogActivites: async (req, res) => {
+        try {
+            const result = await AdminService.useractivities()
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    useronegetlogs: async (req, res) => {
+        try {
+            const userid = req.params.id
+
+            const result = AdminService.oneUserActivitey(userid)
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 };
 

@@ -7,11 +7,15 @@ const logUserAction = require('../utils/others/logUserAction')
 
 const User = require("../models/user.model");
 const profileImage = require("../models/profileimage.model");
+const UserLogs = require("../models/userlog.model")
+
 const {
     GetAllUsersResDTO,
     GetOneUserResDTO,
     UpdateUserRoleResDTO,
-    UpdateUserStatusResDTO
+    UpdateUserStatusResDTO,
+    GetUserLogsResDTO,
+    GetOneUserLogsResDTO
 } = require("../dtos/admin.dto");
 
 class AdminService {
@@ -199,6 +203,25 @@ class AdminService {
             return UpdateUserStatusResDTO()
         }
     }
+
+    static async useractivities() {
+        const userLogs = await UserLogs.find()
+            .populate({
+                path: "user",
+                select: "-password"
+            });
+
+
+        return GetUserLogsResDTO(userLogs)
+    }
+
+    static async oneUserActivitey(userid) {
+        const getoneuserlogs = await UserLogs.findById(userid).populate("user", "-password")
+
+        return GetOneUserLogsResDTO(getoneuserlogs)
+    }
+
+
 }
 
 module.exports = AdminService;

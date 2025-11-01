@@ -51,12 +51,13 @@ const DashSide = ({ closeSidebar }) => {
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/resources" },
         { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/faq" },
-        { name: "User Activities", icon: <Activity />, link: "/Dashboard/userlogs" },
+        { name: "User Activities", icon: <Activity />, link: "/Dashboard/user-logs" },
     ];
 
-    // Filter nav items — hide "Users" for staff role
     const filteredNavItems = auth?.role === "staff"
-        ? navitem.filter((item) => item.name !== "Users")
+        ? navitem.filter(
+            (item) => item.name !== "Users" && item.name !== "User Activities"
+        )
         : navitem;
 
     return (

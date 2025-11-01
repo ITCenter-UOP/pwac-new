@@ -15,6 +15,7 @@ import DashError from '../component/Errors/DashError'
 import Profile from '../pages/Profile/Profile'
 import ManageUser from '../pages/Dashboard/Users/ManageUser'
 import UpdateUser from '../pages/Dashboard/Users/UpdateUser'
+import ManageUserLogs from '../pages/Dashboard/UserActivity/ManageUserLogs'
 
 function App() {
     return (
@@ -36,7 +37,9 @@ function App() {
                     <Route index element={<PrivateRoute roles={['admin', 'staff']}><DashHome /> </PrivateRoute>} />
                     <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user', 'staff']}><Profile /> </PrivateRoute>} />
                     <Route path='manage-users' element={<PrivateRoute roles={['admin']}><ManageUser /> </PrivateRoute>} />
-                    <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />                    
+                    <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />  
+                    <Route path='user-logs' element={<PrivateRoute roles={['admin']}><ManageUserLogs /> </PrivateRoute>} />  
+                                      
                 </Route>
             </Routes>
         </BrowserRouter>

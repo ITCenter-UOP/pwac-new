@@ -14,5 +14,8 @@ router.post('/update-role-user/:id', auth, checkPermission(['user:update-role'])
 router.post('/update-status-user/:id', auth, checkPermission(['user:update-status']), AdminController.updateUserStatus)
 
 
+router.get('/user-logs', auth, checkPermission(['user:get-user-logs']), AdminController.userlogActivites)
+
+router.get('/get-one-log/:id', auth, checkPermission(['user:get-one-user-log']), AdminController.useronegetlogs)
 
 module.exports = router;
