@@ -1,0 +1,1 @@
+exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })
