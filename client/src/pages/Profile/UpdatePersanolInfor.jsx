@@ -9,7 +9,6 @@ import Toast from "../../component/Toast/Toast";
 const UpdatePersonalInfor = () => {
     const token = localStorage.getItem("token");
 
-
     const { values, handleChange } = useForm({
         address: "",
         contact: "",
@@ -28,10 +27,22 @@ const UpdatePersonalInfor = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsUpdating(true);
+
+        const contactArray = values.contact
+            .split(",")
+            .map(num => num.trim())
+            .filter(num => num);
+
+        const payload = { ...values, contact: contactArray };
+
         try {
-            const res = await API.post("/member/update-personal-infor", values, {
-                headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+            const res = await API.post("/member/update-personal-infor", payload, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
             });
+
             if (res.data.success === true) {
                 showToast(true, res.data.message);
                 setTimeout(() => window.location.reload(), 1000);
@@ -50,7 +61,6 @@ const UpdatePersonalInfor = () => {
         <div className="bg-white p-6 mt-8 rounded-md shadow-md border border-purple-200 mx-auto">
             <h1 className="text-lg font-bold mb-4 text-purple-800">Update Personal Information</h1>
 
-            {/* Toast Notification */}
             {toastData.show && (
                 <div className="fixed top-5 right-5 z-50">
                     <Toast success={toastData.success} message={toastData.message} onClose={() => setToastData({ ...toastData, show: false })} />
@@ -67,7 +77,7 @@ const UpdatePersonalInfor = () => {
                 />
 
                 <DefaultInput
-                    label="Contact"
+                    label="Contact Numbers"
                     name="contact"
                     value={values.contact}
                     onChange={handleChange}
@@ -79,7 +89,7 @@ const UpdatePersonalInfor = () => {
                     name="desc"
                     value={values.desc}
                     onChange={handleChange}
-                    placeholder="Write something about yourself, Education Qulification etc"
+                    placeholder="Write something about yourself"
                 />
 
                 <DefaultInput
