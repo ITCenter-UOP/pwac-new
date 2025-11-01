@@ -16,7 +16,9 @@ const {
     updatePassviaDashResDTO,
     updateProfileimageResDTO,
     getProfileImageResDTO,
-    UpdatePersonalInforResDTO
+    UpdatePersonalInforResDTO,
+    GetMyPersonlInforResDTO,
+    GetAllUserPersonlInforResDTO
 } = require("../dtos/member.dto")
 
 
@@ -174,6 +176,25 @@ class MemberService {
         } else {
             throw new Error("Failed to update personal information.");
         }
+    }
+
+    static async GetMyPersonlInfor(token) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email }).populate('role');
+        if (!user) throw new Error("User not found");
+
+        const getpersolinfor = await PersonalInfor.findOne({ user: user._id })
+
+        return GetMyPersonlInforResDTO(getpersolinfor)
     }
 }
 

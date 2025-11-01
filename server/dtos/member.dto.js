@@ -9,5 +9,10 @@ exports.getProfileImageResDTO = (result, message="Profile Image Fetched Successf
 exports.UpdatePersonalInforDTO = (token, address, contact, desc, expertise) => ({ token, address, contact, desc, expertise })
 exports.UpdatePersonalInforResDTO = (message="Personal Information Updated Successfully") => ({ success: true, message })
 
+exports.GetMyPersonlInforResDTO = (result, message="Personal Information Fetched Successfully") => ({ success: true, result, message })
+
+exports.GetAllUserPersonlInforResDTO = (result, message="Personal Information Fetched Successfully") => ({ success: true, result, message })
+
+
 // Error 
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })
