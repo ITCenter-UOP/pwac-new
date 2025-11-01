@@ -4,6 +4,7 @@ import DefaultButton from "../../../component/Buttons/DefaultButton";
 import API from "../../../services/api";
 import UpdateUserType from "./UpdateUserType";
 import { useAuth } from "../../../context/AuthContext";
+import UpdateUserStatus from "./UpdateUserStatus";
 
 const UpdateUser = () => {
     const token = localStorage.getItem("token");
@@ -144,6 +145,15 @@ const UpdateUser = () => {
                     :
                     <div className="mt-8">
                         <UpdateUserType userid={id} />
+                    </div>
+            }
+
+            {
+                auth.id === user._id ?
+                    <div className=""></div>
+                    :
+                    <div className="mt-8">
+                        <UpdateUserStatus userid={id} />
                     </div>
             }
 
