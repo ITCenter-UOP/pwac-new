@@ -1,22 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Quote2img from "../../assets/Quote2img.jpg";
+import API from "../../services/api";
+import DefaultButton from "../../component/Buttons/DefaultButton";
+
 
 const NEWS = () => {
-    const newsData = [
-        { id: 1, title: "Mental Health Workshop", img: Quote2img, addat: "Oct 28, 2025", link: "#" },
-        { id: 2, title: "Campus Counseling Updates", img: Quote2img, addat: "Oct 20, 2025", link: "#" },
-        { id: 3, title: "Stress Management Webinar", img: Quote2img, addat: "Oct 15, 2025", link: "#" },
-        { id: 4, title: "Mindfulness Session Highlights", img: Quote2img, addat: "Oct 10, 2025", link: "#" },
-        { id: 5, title: "University Mental Health Tips", img: Quote2img, addat: "Oct 5, 2025", link: "#" },
-        { id: 6, title: "Peer Support Program", img: Quote2img, addat: "Sep 28, 2025", link: "#" },
-        { id: 7, title: "Counselor Spotlight", img: Quote2img, addat: "Sep 22, 2025", link: "#" },
-        { id: 8, title: "Anxiety Awareness Campaign", img: Quote2img, addat: "Sep 15, 2025", link: "#" },
-        { id: 9, title: "Yoga & Mindfulness Class", img: Quote2img, addat: "Sep 10, 2025", link: "#" },
-        { id: 10, title: "Depression Awareness Week", img: Quote2img, addat: "Sep 5, 2025", link: "#" },
-        { id: 11, title: "Positive Psychology Session", img: Quote2img, addat: "Aug 28, 2025", link: "#" },
-        { id: 12, title: "Wellbeing Resource Hub", img: Quote2img, addat: "Aug 20, 2025", link: "#" },
-    ];
+    const [newsData, setallnews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchnonauthnews = async () => {
+            try {
+                const res = await API.get(`/nonauth/get-all-news?nocache=${Date.now()}`, {
+                    headers: {
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setallnews(res.data.result);
+                } else {
+                    setallnews([]);
+                }
+            } catch (err) {
+                console.error("Failed to fetch users:", err);
+                setError("Could not load users");
+                setallnews([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchnonauthnews();
+    }, []);
+
 
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,25 +83,28 @@ const NEWS = () => {
                 <div className="flex gap-8 md:gap-10 transition-transform duration-700 ease-in-out">
                     {visibleNews.map((news) => (
                         <div
-                            key={news.id}
+                            key={news._id}
                             className="relative group bg-white/60 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden w-72 md:w-80 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                         >
                             <div className="relative overflow-hidden">
                                 <img
-                                    src={news.img}
+                                    src={`${import.meta.env.VITE_APP_API_FILES}/uploads/${news.imageUrl?.[0]}`}
                                     alt={news.title}
                                     className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 left-4 bg-[#560606] text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
-                                    {news.addat}
+                                    {new Date(news.createdAt).toLocaleDateString()}
                                 </div>
                             </div>
                             <div className="p-5 text-center">
                                 <h3 className="text-xl font-bold text-gray-800 mb-2 transition-colors duration-300 group-hover:text-[#560606]">
                                     {news.title}
                                 </h3>
+                                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                                    {news.description?.[0]}
+                                </p>
                                 <a
-                                    href={news.link}
+                                    href={`/news/${news.title}`}
                                     className="inline-block mt-3 text-[#560606] font-medium hover:underline"
                                 >
                                     Read More →
@@ -90,6 +114,8 @@ const NEWS = () => {
                     ))}
                 </div>
 
+
+
                 {/* Right Arrow */}
                 <button
                     onClick={nextSlide}
@@ -98,6 +124,17 @@ const NEWS = () => {
                     <FaArrowRight size={18} />
                 </button>
             </div>
+
+            <center>
+                <div className="mt-20">
+                    <a href="/news">
+                        <DefaultButton 
+                            type="button"
+                            label="View More NEWS"
+                        />
+                    </a>
+                </div>
+            </center>
 
         </section>
     );

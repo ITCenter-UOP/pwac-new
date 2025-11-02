@@ -17,6 +17,7 @@ import ManageUser from '../pages/Dashboard/Users/ManageUser'
 import UpdateUser from '../pages/Dashboard/Users/UpdateUser'
 import ManageUserLogs from '../pages/Dashboard/UserActivity/ManageUserLogs'
 import ViewOneLog from '../pages/Dashboard/UserActivity/ViewOneLog'
+import AllNews from '../pages/HomePage/NEWS/AllNews'
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                     <Route path='forget-password' element={<ForgetPassword />} />
                     <Route path='verify-otp' element={<VerifyOTP />} />
                     <Route path='update-password' element={<UpdatePassword />} />
+                    <Route path='news' element={<AllNews /> } />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
