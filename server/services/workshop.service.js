@@ -100,7 +100,7 @@ class WorkshopService {
     }
 
     static async GetAllWorkshop(){
-        const getallworkshops = Workshop.find()
+        const getallworkshops = await Workshop.find()
         return GetAllWorkshopsResDTO(getallworkshops)
     }
 }

@@ -4,6 +4,7 @@ import AboutUsHome from './AboutUsHome'
 import Quotes from './Quotes'
 import NEWS from './NEWS'
 import GetinTouch from './GetinTouch'
+import WorkShops from './WorkShops'
 
 const HomePage = () => {
     return (
@@ -13,6 +14,9 @@ const HomePage = () => {
             <Quotes />
             <div className="mt-0">
                 <NEWS />
+            </div>
+            <div className="">
+                <WorkShops />
             </div>
             <div className="">
                 <GetinTouch />

@@ -22,6 +22,7 @@ import GetOneNEWS from '../pages/HomePage/NEWS/GetOneNEWS'
 import ManageNews from '../pages/Dashboard/NEWS/ManageNews'
 import CreateNews from '../pages/Dashboard/NEWS/CreateNews'
 import UpdateNews from '../pages/Dashboard/NEWS/UpdateNews'
+import WorkShop from '../pages/HomePage/WorkShop/WorkShop'
 
 function App() {
     return (
@@ -38,6 +39,7 @@ function App() {
                     <Route path='update-password' element={<UpdatePassword />} />
                     <Route path='news' element={<AllNews />} />
                     <Route path='view-news/:title' element={<GetOneNEWS />} />
+                    <Route path='workshops' element={<WorkShop /> } />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
@@ -50,7 +52,7 @@ function App() {
                     <Route path='view-log/:id' element={<PrivateRoute roles={['admin']}><ViewOneLog /> </PrivateRoute>} />
 
                     {/* news management */}
-                    
+
                     <Route path='manage-news' element={<PrivateRoute roles={['admin', 'staff']}><ManageNews /> </PrivateRoute>} />
                     <Route path='create-news' element={<PrivateRoute roles={['admin', 'staff']}><CreateNews /> </PrivateRoute>} />
                     <Route path='update-news/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateNews /> </PrivateRoute>} />
