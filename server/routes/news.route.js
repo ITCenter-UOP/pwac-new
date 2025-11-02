@@ -9,4 +9,6 @@ const router = express.Router();
 
 router.post('/create-news', auth, checkPermission(['news:create']), upload.array('imageUrl', 10), NEWSController.createNews)
 
+router.delete('/delete-image-news/:id', auth, checkPermission(['news:delete-image']), NEWSController.deleteimagesFromNEWS)
+
 module.exports = router;

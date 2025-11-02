@@ -1,5 +1,6 @@
 const {
     createNewsDTO,
+    DeleteImagesDTO,
     ErrorResDTO
 } = require("../dtos/news.dto");
 const NewsService = require("../services/news.service");
@@ -36,6 +37,37 @@ const NEWSController = {
                 dto.title,
                 dto.description,
                 dto.imageUrl,
+                req
+            )
+
+            res.status(200).json(result)
+
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    deleteimagesFromNEWS: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const { image } = req.body;
+            const newsID = req.params.id;
+
+            const dto = DeleteImagesDTO(
+                token,
+                newsID,
+                image
+            )
+
+            const result = NewsService.deleteImagefromNews(
+                dto.token,
+                dto.newsID,
+                dto.imageurl,
                 req
             )
 
