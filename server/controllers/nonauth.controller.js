@@ -12,6 +12,17 @@ const NonAuthController = {
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    getonenews: async (req, res) => {
+        try {
+            const title = req.params.title
+            const result = await NonAuthService.GetOneNews(title)
+            res.status(200).json(result)
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 };
 

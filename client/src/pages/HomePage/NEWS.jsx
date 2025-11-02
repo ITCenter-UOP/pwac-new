@@ -104,7 +104,7 @@ const NEWS = () => {
                                     {news.description?.[0]}
                                 </p>
                                 <a
-                                    href={`/news/${news.title}`}
+                                    href={`/view-news/${news.title}`}
                                     className="inline-block mt-3 text-[#560606] font-medium hover:underline"
                                 >
                                     Read More →

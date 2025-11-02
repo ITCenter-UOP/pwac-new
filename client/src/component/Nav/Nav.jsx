@@ -8,17 +8,19 @@ const Nav = () => {
             <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
 
                 {/* Left Section */}
-                <div className="flex items-center gap-4 text-center md:text-left">
-                    <img src={Logo} alt="Logo" className="h-16 w-auto mx-auto md:mx-0" />
-                    <div>
-                        <p className="text-lg font-semibold leading-tight">
-                            Psychological Wellbeing & Assessment Center
-                        </p>
-                        <p className="text-sm text-gray-200">
-                            University of Peradeniya
-                        </p>
+                <a href="/">
+                    <div className="flex items-center gap-4 text-center md:text-left">
+                        <img src={Logo} alt="Logo" className="h-16 w-auto mx-auto md:mx-0" />
+                        <div>
+                            <p className="text-lg font-semibold leading-tight">
+                                Psychological Wellbeing & Assessment Center
+                            </p>
+                            <p className="text-sm text-gray-200">
+                                University of Peradeniya
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 {/* Right Section */}
                 <div className="flex items-center gap-6">

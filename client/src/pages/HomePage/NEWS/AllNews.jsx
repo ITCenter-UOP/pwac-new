@@ -7,7 +7,9 @@ const AllNews = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState("");
-    const [sortOrder, setSortOrder] = useState("latest"); // 'latest' | 'oldest'
+    const [sortOrder, setSortOrder] = useState("latest");
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 12;
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -48,7 +50,7 @@ const AllNews = () => {
             );
         }
 
-        // Sort by date
+        // Sort
         filtered.sort((a, b) => {
             const dateA = new Date(a.createdAt);
             const dateB = new Date(b.createdAt);
@@ -57,6 +59,65 @@ const AllNews = () => {
 
         return filtered;
     }, [newsData, search, sortOrder]);
+
+    // Pagination logic
+    const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const paginatedNews = filteredNews.slice(startIndex, startIndex + itemsPerPage);
+
+    const handlePageChange = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setCurrentPage(page);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
+    // Reset page when filters/search change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search, sortOrder]);
+
+    const Pagination = () => (
+        <div className="flex justify-center items-center gap-2 mt-8">
+            <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-full ${currentPage === 1
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-[#560606] text-white hover:bg-[#7a0a0a]"
+                    }`}
+            >
+                Prev
+            </button>
+
+            {[...Array(totalPages)].map((_, index) => {
+                const pageNum = index + 1;
+                return (
+                    <button
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`px-4 py-2 rounded-full ${pageNum === currentPage
+                            ? "bg-[#560606] text-white"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                            }`}
+                    >
+                        {pageNum}
+                    </button>
+                );
+            })}
+
+            <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-full ${currentPage === totalPages
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-[#560606] text-white hover:bg-[#7a0a0a]"
+                    }`}
+            >
+                Next
+            </button>
+        </div>
+    );
 
     return (
         <section className="py-20 bg-gray-50 relative overflow-hidden">
@@ -93,14 +154,17 @@ const AllNews = () => {
                 </select>
             </div>
 
+            {/* Top Pagination */}
+            {totalPages > 1 && <Pagination />}
+
             {/* Grid View */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 md:px-16">
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 md:px-16">
                 {loading ? (
                     <p className="col-span-full text-center text-gray-600">Loading news...</p>
                 ) : filteredNews.length === 0 ? (
                     <p className="col-span-full text-center text-gray-600">No news found.</p>
                 ) : (
-                    filteredNews.map((news) => (
+                    paginatedNews.map((news) => (
                         <div
                             key={news._id}
                             className="relative group bg-white/70 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
@@ -123,7 +187,7 @@ const AllNews = () => {
                                     {news.description?.[0]}
                                 </p>
                                 <a
-                                    href={`/news/${news._id}`}
+                                    href={`/view-news/${news.title}`}
                                     className="inline-block mt-3 text-[#560606] font-medium hover:underline"
                                 >
                                     Read More →
@@ -133,6 +197,9 @@ const AllNews = () => {
                     ))
                 )}
             </div>
+
+            {/* Bottom Pagination */}
+            {totalPages > 1 && <Pagination />}
         </section>
     );
 };
