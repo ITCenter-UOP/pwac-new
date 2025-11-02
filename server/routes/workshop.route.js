@@ -12,4 +12,6 @@ router.put("/update-workshop", auth, checkPermission(['workshop:update']), uploa
 
 router.get('/get-all-workshops', WorkshopController.getallWorkshops)
 
+router.get('/get-one-workshop/:id', WorkshopController.getoneworkshop)
+
 module.exports = router;

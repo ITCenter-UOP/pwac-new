@@ -13,7 +13,8 @@ const Workshop = require("../models/workshop.model");
 const {
     CreateWorkshopResDTO,
     UpdateWorkshopResDTO,
-    GetAllWorkshopsResDTO
+    GetAllWorkshopsResDTO,
+    GetOneWorkshopsResDTO
 } = require("../dtos/workshop.dto");
 
 class WorkshopService {
@@ -102,6 +103,11 @@ class WorkshopService {
     static async GetAllWorkshop(){
         const getallworkshops = await Workshop.find()
         return GetAllWorkshopsResDTO(getallworkshops)
+    }
+
+    static async GetOneWorkshop(workshopId){
+        const getonewokrshop = await Workshop.findById(workshopId)
+        return GetOneWorkshopsResDTO(getonewokrshop)
     }
 }
 

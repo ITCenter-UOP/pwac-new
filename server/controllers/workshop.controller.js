@@ -105,6 +105,18 @@ const WorkshopController = {
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    getoneworkshop: async(req, res) => {
+        try{
+            const workshopid = req.params.id
+
+            const result = await WorkshopService.GetOneWorkshop(workshopid)
+            res.status(200).json(result)
+        }
+        catch(err){
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 };
 
