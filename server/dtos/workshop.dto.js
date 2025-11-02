@@ -17,5 +17,7 @@ exports.UpdateWorkshopResDTO = (message = "Workshop Updated Successfully") => ({
     message
 });
 
+exports.GetAllWorkshopsResDTO = (result, message="All Workshop Fetched Successfully") => ({ success: true, result, message })
+
 
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

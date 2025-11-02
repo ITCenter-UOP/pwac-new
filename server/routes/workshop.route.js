@@ -10,4 +10,6 @@ router.post("/create-workshop", auth, checkPermission(['workshop:create']), uplo
 
 router.put("/update-workshop", auth, checkPermission(['workshop:update']), upload.single("image"), WorkshopController.updateWorkshop);
 
+router.get('/get-all-workshops', WorkshopController.getallWorkshops)
+
 module.exports = router;
