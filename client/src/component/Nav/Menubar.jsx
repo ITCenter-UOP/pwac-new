@@ -21,12 +21,9 @@ const Menubar = () => {
                 <ul className="hidden md:flex items-center gap-8">
                     {secNavData.map((item) => (
                         <li key={item.id}>
-                            <Link
-                                to={item.link}
-                                className="text-gray-700 hover:text-[#560606] transition font-medium"
-                            >
+                            <a href={item.link} className="text-gray-700 hover:text-[#560606] transition font-medium">
                                 {item.name}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>
