@@ -20,6 +20,7 @@ import ViewOneLog from '../pages/Dashboard/UserActivity/ViewOneLog'
 import AllNews from '../pages/HomePage/NEWS/AllNews'
 import GetOneNEWS from '../pages/HomePage/NEWS/GetOneNEWS'
 import ManageNews from '../pages/Dashboard/NEWS/ManageNews'
+import CreateNews from '../pages/Dashboard/NEWS/CreateNews'
 
 function App() {
     return (
@@ -50,6 +51,8 @@ function App() {
                     {/* news management */}
 
                     <Route path='manage-news' element={<PrivateRoute roles={['admin', 'staff']}><ManageNews /> </PrivateRoute>} />
+                    <Route path='create-news' element={<PrivateRoute roles={['admin', 'staff']}><CreateNews /> </PrivateRoute>} />
+                    
 
                 </Route>
             </Routes>

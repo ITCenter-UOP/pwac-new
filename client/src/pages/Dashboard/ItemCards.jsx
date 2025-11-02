@@ -14,6 +14,7 @@ import API from "../../services/api";
 
 const ItemCards = () => {
     const [users, setUsers] = useState([]);
+    const [NewsList, setNewsList] = useState([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -48,14 +49,45 @@ const ItemCards = () => {
         fetchAllUsers();
     }, [token]);
 
+    useEffect(() => {
+        const fetchAllNews = async () => {
+            try {
+                const res = await API.get(`/news/get-all-news?nocache=${Date.now()}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setNewsList(res.data.result);
+                } else {
+                    setNewsList([]);
+                }
+            } catch (err) {
+                console.error("Failed to fetch news:", err);
+                setError("Could not load news");
+                setNewsList([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAllNews();
+    }, [token]);
+
     const adminCount = users.filter(u => u.role?.name?.toLowerCase() === "admin").length;
     const staffCount = users.filter(u => u.role?.name?.toLowerCase() === "staff").length;
     const userCount = users.filter(u => u.role?.name?.toLowerCase() === "user").length;
 
+    const newscount = NewsList.length;
+
     const items = [
         { id: 1, name: "Users", icon: <FaUsers />, value: userCount },
         { id: 2, name: "Appointments", icon: <GrSchedules />, value: 18 },
-        { id: 3, name: "News & Events", icon: <FaNewspaper />, value: 12 },
+        { id: 3, name: "News & Events", icon: <FaNewspaper />, value: newscount },
         { id: 4, name: "Team", icon: <IoPeople />, value: adminCount + staffCount },
         { id: 5, name: "Workshops", icon: <MdEvent />, value: 4 },
         { id: 6, name: "Resources", icon: <FiBook />, value: 22 },
