@@ -22,6 +22,7 @@ const roleRoute = require("./routes/role.route")
 const memberRoute = require("./routes/member.route")
 const adminRoute = require("./routes/admin.route")
 const newsRoute = require("./routes/news.route")
+const nonauthRoute = require('./routes/nonauth.route')
 
 // ---------------------- END of Importing Routes
 
@@ -114,6 +115,8 @@ app.use('/api/role', roleRoute)
 app.use('/api/member', memberRoute)
 app.use('/api/admin', adminRoute)
 app.use('/api/news', newsRoute)
+app.use('/api/nonauth', nonauthRoute)
+
 
 // -------------- END routes-----------------------
 
