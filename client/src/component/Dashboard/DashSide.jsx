@@ -47,7 +47,7 @@ const DashSide = ({ closeSidebar }) => {
         { name: "Dashboard", icon: <BiSolidDashboard />, link: "/Dashboard" },
         { name: "Users", icon: <FaUser />, link: "/Dashboard/manage-users" },
         { name: "Appointment", icon: <GrSchedules />, link: "/Dashboard/appointment" },
-        { name: "News & Event", icon: <FaNewspaper />, link: "/Dashboard/news-event" },
+        { name: "News & Event", icon: <FaNewspaper />, link: "/Dashboard/manage-news" },
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/resources" },
         { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/faq" },

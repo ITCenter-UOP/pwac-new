@@ -132,7 +132,7 @@ const NEWSController = {
 
             res.status(200).json(result);
         } catch (err) {
-            return res.status(400).json({ success: false, message: err.message });
+            return res.status(400).json(ErrorResDTO(err.message));
         }
     },
 
@@ -161,7 +161,24 @@ const NEWSController = {
 
             res.status(200).json(result);
         } catch (err) {
-            return res.status(400).json({ success: false, message: err.message });
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
+    },
+
+    getallnews: async (req, res) => {
+        try {
+            const token = req.header("Authorization")?.replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ message: "Access denied. No token provided." });
+            }
+
+            const result = await NewsService.GetAllNews(token)
+
+            res.status(200).json(result)
+
+        }
+        catch (err) {
+            return res.status(400).json(ErrorResDTO(err.message));
         }
     }
 };

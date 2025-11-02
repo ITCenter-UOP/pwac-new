@@ -29,4 +29,6 @@ exports.AddImagesDTO = (token, newsID, imageUrls) => ({
 
 exports.AddImagesResDTO = (message = "Images for NEWS Successfully Added") => ({ success: true, message })
 
+exports.GetallNewsResDTO = (result, message = "Fetch All News Success") => ({ success: true, result, message })
+
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

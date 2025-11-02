@@ -17,6 +17,7 @@ const {
     DeleteImagesResDTO,
     UpdateNewsDescResDTO,
     DeleteDescriptionResDTO,
+    GetallNewsResDTO,    
     AddImagesResDTO,
 } = require("../dtos/news.dto")
 
@@ -270,6 +271,36 @@ class NewsService {
         }
 
         return AddImagesResDTO()
+    }
+
+    static async GetAllNews(token) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email }).populate("role");
+        if (!user) throw new Error("User not found");
+
+        const isAdmin = user.role && user.role.name && user.role.name.toLowerCase() === "admin";
+
+        let allnews;
+        if (isAdmin) {
+            allnews = await NEWS.find()
+                .populate("user", "fullName email username")
+                .sort({ createdAt: -1 });
+        } else {
+            allnews = await NEWS.find({ user: user._id })
+                .populate("user", "fullName email username")
+                .sort({ createdAt: -1 });
+        }
+
+        return GetallNewsResDTO(allnews)
     }
 
 }

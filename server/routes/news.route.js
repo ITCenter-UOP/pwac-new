@@ -17,5 +17,6 @@ router.delete('/delete-news-desc/:id', auth, checkPermission(['news:delete-desc'
 
 router.post('/add-images-news/:id', auth, checkPermission(['news:add-images']), upload.array('imageUrl', 10), NEWSController.addImagesToNEWS)
 
+router.get('/get-all-news', auth, checkPermission(['news:get-all']), NEWSController.getallnews) 
 
 module.exports = router;

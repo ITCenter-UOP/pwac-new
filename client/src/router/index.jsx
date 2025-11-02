@@ -19,6 +19,7 @@ import ManageUserLogs from '../pages/Dashboard/UserActivity/ManageUserLogs'
 import ViewOneLog from '../pages/Dashboard/UserActivity/ViewOneLog'
 import AllNews from '../pages/HomePage/NEWS/AllNews'
 import GetOneNEWS from '../pages/HomePage/NEWS/GetOneNEWS'
+import ManageNews from '../pages/Dashboard/NEWS/ManageNews'
 
 function App() {
     return (
@@ -33,8 +34,8 @@ function App() {
                     <Route path='forget-password' element={<ForgetPassword />} />
                     <Route path='verify-otp' element={<VerifyOTP />} />
                     <Route path='update-password' element={<UpdatePassword />} />
-                    <Route path='news' element={<AllNews /> } />
-                    <Route path='view-news/:title' element={<GetOneNEWS /> } />
+                    <Route path='news' element={<AllNews />} />
+                    <Route path='view-news/:title' element={<GetOneNEWS />} />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
@@ -45,6 +46,11 @@ function App() {
                     <Route path='update-user/:id' element={<PrivateRoute roles={['admin']}><UpdateUser /> </PrivateRoute>} />
                     <Route path='user-logs' element={<PrivateRoute roles={['admin']}><ManageUserLogs /> </PrivateRoute>} />
                     <Route path='view-log/:id' element={<PrivateRoute roles={['admin']}><ViewOneLog /> </PrivateRoute>} />
+
+                    {/* news management */}
+
+                    <Route path='manage-news' element={<PrivateRoute roles={['admin', 'staff']}><ManageNews /> </PrivateRoute>} />
+
                 </Route>
             </Routes>
         </BrowserRouter>
