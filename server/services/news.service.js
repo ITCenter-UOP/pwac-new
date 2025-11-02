@@ -15,6 +15,9 @@ const sendEmail = require("../utils/email/emailTransporter")
 const {
     CreateNewsResDTO,
     DeleteImagesResDTO,
+    UpdateNewsDescResDTO,
+    DeleteDescriptionResDTO,
+    AddImagesResDTO,
 } = require("../dtos/news.dto")
 
 
@@ -114,6 +117,159 @@ class NewsService {
         }
 
         return DeleteImagesResDTO();
+    }
+
+    static async updateDescriptionFromNews(token, newsID, newDescription, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email }).populate("role");
+        if (!user) throw new Error("User not found");
+
+        const news = await NEWS.findById(newsID);
+        if (!news) throw new Error("News not found");
+
+        const isOwner = news.user.toString() === user._id.toString();
+        const isAdmin = user.role && user.role.name && user.role.name.toLowerCase() === "admin";
+
+        if (!isOwner && !isAdmin) {
+            throw new Error("You are not authorized to modify this news.");
+        }
+
+        if (!newDescription || (Array.isArray(newDescription) && newDescription.length === 0)) {
+            throw new Error("Description cannot be empty.");
+        }
+
+        const newDescArray = Array.isArray(newDescription) ? newDescription : [newDescription];
+        news.description = [...news.description, ...newDescArray];
+        await news.save();
+
+        if (req) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+
+            await logUserAction(
+                req,
+                "news_description_updated",
+                `${decoded.email} updated description of news ${newsID}`,
+                metadata,
+                user._id
+            );
+        }
+
+        return UpdateNewsDescResDTO();
+    }
+
+    static async deleteDescriptionFromNews(token, newsID, description, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email }).populate("role");
+        if (!user) throw new Error("User not found");
+
+        const news = await NEWS.findById(newsID);
+        if (!news) throw new Error("News not found");
+
+        const isOwner = news.user.toString() === user._id.toString();
+        const isAdmin = user.role && user.role.name && user.role.name.toLowerCase() === "admin";
+
+        if (!isOwner && !isAdmin) {
+            throw new Error("You are not authorized to modify this news.");
+        }
+
+        // If description not found
+        if (!news.description.includes(description)) {
+            throw new Error("Description not found in this news item.");
+        }
+
+        // Remove only that description
+        news.description = news.description.filter(desc => desc !== description);
+        await news.save();
+
+        if (req) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+
+            await logUserAction(
+                req,
+                "news_description_deleted",
+                `${decoded.email} deleted description '${description}' from news ${newsID}`,
+                metadata,
+                user._id
+            );
+        }
+
+        return DeleteDescriptionResDTO()
+    }
+
+    static async addImagesToNews(token, newsID, imageUrls, req) {
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (err) {
+            if (err.name === "TokenExpiredError") {
+                throw new Error("Token expired. Please request a new one.");
+            }
+            throw new Error("Invalid token.");
+        }
+
+        const user = await User.findOne({ email: decoded.email }).populate("role");
+        if (!user) throw new Error("User not found");
+
+        const news = await NEWS.findById(newsID);
+        if (!news) throw new Error("News not found");
+
+        const isOwner = news.user.toString() === user._id.toString();
+        const isAdmin = user.role && user.role.name && user.role.name.toLowerCase() === "admin";
+        if (!isOwner && !isAdmin) {
+            throw new Error("You are not authorized to modify this news.");
+        }
+
+        if (!Array.isArray(imageUrls) || imageUrls.length === 0) {
+            throw new Error("No images provided.");
+        }
+
+        // Append new images
+        news.imageUrl.push(...imageUrls);
+        await news.save();
+
+        if (req) {
+            const metadata = {
+                ipAddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+                userAgent: req.headers['user-agent'],
+                timestamp: new Date(),
+            };
+
+            await logUserAction(
+                req,
+                "news_images_added",
+                `${decoded.email} added ${imageUrls.length} image(s) to news ${newsID}`,
+                metadata,
+                user._id
+            );
+        }
+
+        return AddImagesResDTO()
     }
 
 }
