@@ -64,7 +64,7 @@ const NEWSController = {
                 image
             )
 
-            const result = NewsService.deleteImagefromNews(
+            const result = await NewsService.deleteImagefromNews(
                 dto.token,
                 dto.newsID,
                 dto.imageurl,

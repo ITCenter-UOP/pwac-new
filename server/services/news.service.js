@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const crypto = require("crypto")
+const fs = require("fs");
+const path = require("path")
 
 const User = require("../models/user.model")
 const Role = require("../models/role.model")
@@ -70,17 +72,17 @@ class NewsService {
             throw new Error("Invalid token.");
         }
 
-        const user = await User.findOne({ email: decoded.email });
+        const user = await User.findOne({ email: decoded.email }).populate("role");
         if (!user) throw new Error("User not found");
 
         const news = await NEWS.findById(newsID);
         if (!news) throw new Error("News not found");
 
         const isOwner = news.user.toString() === user._id.toString();
-        const isAdmin = user.role && user.role.name.toLowerCase() === "admin";
+        const isAdmin = user.role && user.role.name && user.role.name.toLowerCase() === "admin";
 
         if (!isOwner && !isAdmin) {
-            throw new Error("You are not authorized to delete images from this news.");
+            throw new Error("You are not authorized to modify this news.");
         }
 
         if (!news.imageUrl.includes(image)) {
@@ -101,6 +103,7 @@ class NewsService {
                 userAgent: req.headers['user-agent'],
                 timestamp: new Date(),
             };
+
             await logUserAction(
                 req,
                 "news_image_deleted",
@@ -108,10 +111,11 @@ class NewsService {
                 metadata,
                 user._id
             );
-
-            return DeleteImagesResDTO()
         }
+
+        return DeleteImagesResDTO();
     }
+
 }
 
 module.exports = NewsService
