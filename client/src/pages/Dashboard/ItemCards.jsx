@@ -84,12 +84,43 @@ const ItemCards = () => {
 
     const newscount = NewsList.length;
 
+    const [WorkshopList, setWorkshopList] = useState([])
+
+    useEffect(() => {
+        const fetchAllWorkshops = async () => {
+            try {
+                const res = await API.get(`/workshop/get-all-workshops?nocache=${Date.now()}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Cache-Control": "no-cache",
+                        Pragma: "no-cache",
+                        Expires: "0",
+                    },
+                });
+
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setWorkshopList(res.data.result);
+                } else {
+                    setWorkshopList([]);
+                }
+            } catch (err) {
+                console.error("Failed to fetch workshops:", err);
+                setError("Could not load workshops");
+                setWorkshopList([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAllWorkshops();
+    }, [token]);
+
     const items = [
         { id: 1, name: "Users", icon: <FaUsers />, value: userCount },
         { id: 2, name: "Appointments", icon: <GrSchedules />, value: 18 },
         { id: 3, name: "News & Events", icon: <FaNewspaper />, value: newscount },
         { id: 4, name: "Team", icon: <IoPeople />, value: adminCount + staffCount },
-        { id: 5, name: "Workshops", icon: <MdEvent />, value: 4 },
+        { id: 5, name: "Workshops", icon: <MdEvent />, value: WorkshopList.length },
         { id: 6, name: "Resources", icon: <FiBook />, value: 22 },
         { id: 7, name: "FAQs", icon: <FaQuestion />, value: 15 },
     ];
