@@ -19,4 +19,6 @@ router.post('/add-images-news/:id', auth, checkPermission(['news:add-images']), 
 
 router.get('/get-all-news', auth, checkPermission(['news:get-all']), NEWSController.getallnews) 
 
+router.get('/get-one-news/:id', auth, checkPermission(['news:get-one-news']), NEWSController.getonwNews)
+
 module.exports = router;

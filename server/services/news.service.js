@@ -19,6 +19,7 @@ const {
     DeleteDescriptionResDTO,
     GetallNewsResDTO,    
     AddImagesResDTO,
+    GetOneNewsResDTO
 } = require("../dtos/news.dto")
 
 
@@ -301,6 +302,12 @@ class NewsService {
         }
 
         return GetallNewsResDTO(allnews)
+    }
+
+    static async GetOneNews(newsID){
+        const getonenews = await NEWS.findById(newsID)
+
+        return GetOneNewsResDTO(getonenews)
     }
 
 }

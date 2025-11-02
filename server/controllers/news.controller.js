@@ -180,6 +180,18 @@ const NEWSController = {
         catch (err) {
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    getonwNews: async(req, res) => {
+        try{
+            const newsID = req.params.id
+            const result = await NewsService.GetOneNews(newsID)
+
+            res.status(200).json(result)
+        }
+        catch(err){
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 };
 

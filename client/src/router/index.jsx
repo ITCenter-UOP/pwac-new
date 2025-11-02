@@ -21,6 +21,7 @@ import AllNews from '../pages/HomePage/NEWS/AllNews'
 import GetOneNEWS from '../pages/HomePage/NEWS/GetOneNEWS'
 import ManageNews from '../pages/Dashboard/NEWS/ManageNews'
 import CreateNews from '../pages/Dashboard/NEWS/CreateNews'
+import UpdateNews from '../pages/Dashboard/NEWS/UpdateNews'
 
 function App() {
     return (
@@ -49,9 +50,10 @@ function App() {
                     <Route path='view-log/:id' element={<PrivateRoute roles={['admin']}><ViewOneLog /> </PrivateRoute>} />
 
                     {/* news management */}
-
+                    
                     <Route path='manage-news' element={<PrivateRoute roles={['admin', 'staff']}><ManageNews /> </PrivateRoute>} />
                     <Route path='create-news' element={<PrivateRoute roles={['admin', 'staff']}><CreateNews /> </PrivateRoute>} />
+                    <Route path='update-news/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateNews /> </PrivateRoute>} />
                     
 
                 </Route>
