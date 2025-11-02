@@ -51,10 +51,10 @@ const MainFooter = () => {
                             University of Peradeniya, Peradeniya, Sri Lanka
                         </li>
                         <li className="flex items-start gap-3">
-                            <FaPhoneAlt className="text-[#f1d7b0] mt-1" /> +94 81 123 4567
+                            <FaPhoneAlt className="text-[#f1d7b0] mt-1" /> <a href="tel:+94812392816">+94 81 239 2816</a> 
                         </li>
                         <li className="flex items-start gap-3">
-                            <FaEnvelope className="text-[#f1d7b0] mt-1" /> wellbeing@pdn.ac.lk
+                            <FaEnvelope className="text-[#f1d7b0] mt-1" /> <a href="mailto:hod.psy@arts.pdn.ac.lk">hod.psy@arts.pdn.ac.lk</a>
                         </li>
                     </ul>
                 </div>

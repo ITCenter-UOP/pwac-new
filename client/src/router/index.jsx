@@ -26,6 +26,8 @@ import WorkShop from '../pages/HomePage/WorkShop/WorkShop'
 import ManageWorkshop from '../pages/Dashboard/WorkShop/ManageWorkshop'
 import UpdateWorkshop from '../pages/Dashboard/WorkShop/UpdateWorkshop'
 import CreateWorkshop from '../pages/Dashboard/WorkShop/CreateWorkshop'
+import Aboutus from '../pages/HomePage/AboutUs/Aboutus'
+import Services from '../pages/HomePage/Services/Services'
 
 function App() {
     return (
@@ -43,6 +45,8 @@ function App() {
                     <Route path='news' element={<AllNews />} />
                     <Route path='view-news/:title' element={<GetOneNEWS />} />
                     <Route path='workshops' element={<WorkShop />} />
+                    <Route path='aboutus' element={<Aboutus /> } />
+                    <Route path='services' element={<Services /> } />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
