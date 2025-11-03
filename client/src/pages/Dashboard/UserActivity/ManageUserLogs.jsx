@@ -173,7 +173,7 @@ const ManageUserLogs = () => {
                     >
                         Prev
                     </button>
-                    <span className="text-gray-200 text-sm">
+                    <span className="text-black text-sm">
                         Page {currentPage} of {totalPages}
                     </span>
                     <button
