@@ -41,11 +41,14 @@ import UpdateAppointment from '../pages/Dashboard/Appointments/UpdateAppointment
 import MyAccount from '../layouts/MyAccount'
 import DashboardMy from '../pages/MyAccount/DashboardMy'
 import DashErrorUser from '../component/MyAccount/DashErrorUser'
+import CreateAppointment from '../pages/MyAccount/CreateAppointment'
+import TrackMyAppointment from '../pages/MyAccount/TrackMyAppointment'
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
+                {/* website */}
                 <Route path='/' element={<WebSite />} >
                     <Route path='*' element={<DefultError />} />
                     <Route index element={<HomePage />} />
@@ -64,6 +67,7 @@ function App() {
                     <Route path='faqs' element={<FAQ />} />
                 </Route>
 
+                {/* admin and staff dashboard */}
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
                     <Route path='*' element={<PrivateRoute roles={['admin', 'staff']}><DashError /> </PrivateRoute>} />
                     <Route index element={<PrivateRoute roles={['admin', 'staff']}><DashHome /> </PrivateRoute>} />
@@ -105,10 +109,15 @@ function App() {
 
                 </Route>
 
+                {/* user Dashboard */}
+
                 <Route path='/my-account' element={<PrivateRoute roles={['admin', 'user']}><MyAccount /></PrivateRoute>}>
                     <Route path='*' element={<PrivateRoute roles={['admin', 'staff', 'user']}><DashErrorUser /> </PrivateRoute>} />
                     <Route index element={<PrivateRoute roles={['admin', 'user']}><DashboardMy /> </PrivateRoute>} />
                     <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user', 'staff']}><Profile /> </PrivateRoute>} />
+                    <Route path='create-appointment' element={<PrivateRoute roles={['admin', 'user', 'staff']}><CreateAppointment /> </PrivateRoute>} />                    
+                    <Route path='track-appointment' element={<PrivateRoute roles={['admin', 'user', 'staff']}><TrackMyAppointment /> </PrivateRoute>} />                    
+                
                 </Route>
             </Routes>
         </BrowserRouter>
