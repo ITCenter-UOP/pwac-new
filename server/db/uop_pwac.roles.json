@@ -1,0 +1,110 @@
+[{
+  "_id": {
+    "$oid": "6837b60b735077d2866f126b"
+  },
+  "name": "admin",
+  "permissions": [
+    "role:readall",
+    "role:readone",
+    "role:create",
+    "role:update",
+    "role:delete",
+    "systemusers:manage",
+    "systemusers:create",
+    "systemusers:update",
+    "permission:manage",
+    "permission:create",
+    "permission:update",
+    "permission:delete",
+    "user:get-all",
+    "user:get-one-user",
+    "user:update-role",
+    "user:update-status",
+    "user:get-user-logs",
+    "user:get-one-user-log",
+    "user:personal-data",
+    "news:create",
+    "news:delete-image",
+    "news:update-desc",
+    "news:delete-desc",
+    "news:add-images",
+    "news:get-all",
+    "news:get-one-news",
+    "workshop:create",
+    "workshop:update",
+    "resource:create",
+    "resource:delete",
+    "faq:create",
+    "faq:update",
+    "appointment:create",
+    "appointment:update",
+    "appointment:view",
+    "appointment:view-one",
+    "appointment:update",
+    "update-be-owner",
+    "appointment:update-status"
+  ],
+  "createdAt": {
+    "$date": "2025-05-29T01:19:07.542Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-12T21:56:01.413Z"
+  },
+  "__v": 45
+},
+{
+  "_id": {
+    "$oid": "6843973fea08c312b1a7d4cb"
+  },
+  "name": "staff",
+  "permissions": [
+    "user:get-all",
+    "user:get-one-user",
+    "news:create",
+    "news:delete-image",
+    "news:update-desc",
+    "news:delete-desc",
+    "news:add-images",
+    "news:get-all",
+    "news:get-one-news",
+    "resource:create",
+    "resource:delete",
+    "faq:create",
+    "faq:update",
+    "appointment:create",
+    "appointment:update",
+    "appointment:view",
+    "appointment:view-one",
+    "appointment:update",
+    "update-be-owner",
+    "appointment:update-status"
+  ],
+  "createdAt": {
+    "$date": "2025-05-29T01:19:18.585Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-30T02:41:54.448Z"
+  },
+  "__v": 38
+},
+{
+  "_id": {
+    "$oid": "6837b616735077d2866f126e"
+  },
+  "name": "user",
+  "permissions": [
+    "appointment:create",
+    "appointment:update",
+    "appointment:view",
+    "appointment:view-one",
+    "appointment:update",
+    "update-be-owner"
+  ],
+  "createdAt": {
+    "$date": "2025-05-29T01:19:18.585Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-30T02:41:54.448Z"
+  },
+  "__v": 38
+}]

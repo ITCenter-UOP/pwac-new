@@ -1,0 +1,330 @@
+[{
+  "_id": {
+    "$oid": "6907549ca5366c2efe77d9f7"
+  },
+  "title": "AI Workshop",
+  "subtitle": "Updated subtitle",
+  "date": {
+    "$date": "2025-11-28T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762089175587.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T12:54:52.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T14:22:09.024Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c6537246442b1f8fec2"
+  },
+  "title": "AI Workshop 1",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090085928.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:05.944Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:05.944Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c6a37246442b1f8feca"
+  },
+  "title": "AI Workshop 2",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090090457.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:10.467Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:10.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c6e37246442b1f8fed2"
+  },
+  "title": "AI Workshop 3",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090094177.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:14.208Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:14.208Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c7137246442b1f8feda"
+  },
+  "title": "AI Workshop 4",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090097522.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:17.529Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:17.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c7437246442b1f8fee2"
+  },
+  "title": "AI Workshop 5",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090100270.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:20.276Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:20.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c7937246442b1f8feee"
+  },
+  "title": "AI Workshop 6",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090105429.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:25.452Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:25.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c7c37246442b1f8fef6"
+  },
+  "title": "AI Workshop 7",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090108491.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:28.499Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:28.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c7f37246442b1f8fefe"
+  },
+  "title": "AI Workshop 8",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090111234.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:31.245Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:31.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c8237246442b1f8ff06"
+  },
+  "title": "AI Workshop 9",
+  "subtitle": "Learn about modern AI tools asdasd",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762093166709.PNG",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:34.563Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T14:19:26.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c8537246442b1f8ff0e"
+  },
+  "title": "AI Workshop 10",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090117669.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:37.676Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:37.676Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c8937246442b1f8ff16"
+  },
+  "title": "AI Workshop 11",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090121823.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:41.829Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:41.829Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69075c8d37246442b1f8ff1e"
+  },
+  "title": "AI Workshop 12",
+  "subtitle": "Learn about modern AI tools",
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "time": "10:00",
+  "image": "1762090125023.png",
+  "description": "An interactive workshop covering machine learning basics.",
+  "registrationLink": "https://forms.gle/abc123xyz",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T13:28:45.030Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T13:28:45.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69076b9d40b8fbb8533d1266"
+  },
+  "title": "New Titile",
+  "subtitle": "New Sub title",
+  "date": {
+    "$date": "2025-12-05T00:00:00.000Z"
+  },
+  "time": "08:35",
+  "image": "1762093981807.PNG",
+  "description": "New Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub titleNew Sub title",
+  "registrationLink": "https://www.google.com/",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T14:33:01.819Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T14:33:01.819Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69076c5840b8fbb8533d12a2"
+  },
+  "title": "New Latest Workshop",
+  "subtitle": "New Latest Workshop ST",
+  "date": {
+    "$date": "2025-12-11T00:00:00.000Z"
+  },
+  "time": "14:01",
+  "image": "1762094168176.PNG",
+  "description": "New Latest Workshop STNew Latest Workshop STNew Latest Workshop STNew Latest Workshop ST",
+  "registrationLink": "google.com",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-11-02T14:36:08.195Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T14:36:08.195Z"
+  },
+  "__v": 0
+}]

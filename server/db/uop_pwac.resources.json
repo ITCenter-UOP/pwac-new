@@ -1,0 +1,225 @@
+[{
+  "_id": {
+    "$oid": "692000000000000000000001"
+  },
+  "title": "Understanding Anxiety",
+  "content": "A comprehensive guide to recognizing and managing anxiety, including coping strategies and relaxation techniques.",
+  "link": "https://www.apa.org/topics/anxiety",
+  "createdAt": {
+    "$date": "2025-11-03T04:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000002"
+  },
+  "title": "Coping with Depression",
+  "content": "Resources and strategies to identify symptoms of depression and access professional help.",
+  "link": "https://www.nimh.nih.gov/health/topics/depression",
+  "createdAt": {
+    "$date": "2025-11-03T04:01:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:01:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000003"
+  },
+  "title": "Stress Management Techniques",
+  "content": "Learn effective stress reduction strategies including mindfulness, time management, and relaxation exercises.",
+  "link": "https://www.mindful.org/stress-management-tips",
+  "createdAt": {
+    "$date": "2025-11-03T04:02:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:02:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000004"
+  },
+  "title": "Building Resilience",
+  "content": "Guidelines on how to strengthen personal resilience to cope with challenges and adversity.",
+  "link": "https://www.mentalhealth.org.uk/a-to-z/r/resilience",
+  "createdAt": {
+    "$date": "2025-11-03T04:03:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:03:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000005"
+  },
+  "title": "Mindfulness for Students",
+  "content": "Practical exercises and techniques to practice mindfulness for better focus and emotional wellbeing.",
+  "link": "https://www.headspace.com/mindfulness",
+  "createdAt": {
+    "$date": "2025-11-03T04:04:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:04:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000006"
+  },
+  "title": "Time Management Tips",
+  "content": "Strategies to improve productivity, reduce stress, and balance academic and personal life.",
+  "link": "https://www.coursera.org/articles/time-management-tips",
+  "createdAt": {
+    "$date": "2025-11-03T04:05:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:05:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000007"
+  },
+  "title": "Dealing with Exam Stress",
+  "content": "Tips and exercises to manage exam-related stress, anxiety, and performance pressure.",
+  "link": "https://www.studygs.net/stress.htm",
+  "createdAt": {
+    "$date": "2025-11-03T04:06:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:06:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000008"
+  },
+  "title": "Self-Care Practices",
+  "content": "Learn daily self-care routines to support mental and emotional wellbeing.",
+  "link": "https://www.mentalhealth.gov/self-care",
+  "createdAt": {
+    "$date": "2025-11-03T04:07:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:07:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000009"
+  },
+  "title": "Understanding Burnout",
+  "content": "Identify signs of burnout and learn strategies to recover and prevent future episodes.",
+  "link": "https://www.who.int/news-room/questions-and-answers/item/mental-health-at-work",
+  "createdAt": {
+    "$date": "2025-11-03T04:08:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:08:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000010"
+  },
+  "title": "Suicide Prevention Resources",
+  "content": "Information on how to recognize warning signs and access professional help for suicidal thoughts.",
+  "link": "https://suicidepreventionlifeline.org",
+  "createdAt": {
+    "$date": "2025-11-03T04:09:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:09:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000011"
+  },
+  "title": "Healthy Sleep Habits",
+  "content": "Guidelines for improving sleep quality to support mental health and academic performance.",
+  "link": "https://www.sleepfoundation.org/sleep-hygiene",
+  "createdAt": {
+    "$date": "2025-11-03T04:10:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:10:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000012"
+  },
+  "title": "Managing Social Anxiety",
+  "content": "Tips and techniques to cope with social anxiety in academic and personal settings.",
+  "link": "https://adaa.org/understanding-anxiety/social-anxiety-disorder",
+  "createdAt": {
+    "$date": "2025-11-03T04:11:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:11:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000013"
+  },
+  "title": "Emotional Intelligence for Students",
+  "content": "Learn how to develop emotional intelligence skills to improve relationships and mental wellbeing.",
+  "link": "https://www.psychologytoday.com/us/basics/emotional-intelligence",
+  "createdAt": {
+    "$date": "2025-11-03T04:12:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:12:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000014"
+  },
+  "title": "Online Therapy Options",
+  "content": "Explore online therapy platforms for confidential counseling and support.",
+  "link": "https://www.betterhelp.com",
+  "createdAt": {
+    "$date": "2025-11-03T04:13:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:13:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692000000000000000000015"
+  },
+  "title": "Nutrition and Mental Health",
+  "content": "Learn how a balanced diet affects mental wellbeing and cognitive performance.",
+  "link": "https://www.mentalhealth.org.uk/a-to-z/n/nutrition-and-mental-health",
+  "createdAt": {
+    "$date": "2025-11-03T04:14:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T04:14:00.000Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,497 @@
+[{
+  "_id": {
+    "$oid": "6906aa128fe85668143faa2e"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762044434493.png",
+    "1762044434498.png",
+    "1762045277362.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T00:47:14.519Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:01:47.913Z"
+  },
+  "__v": 7
+},
+{
+  "_id": {
+    "$oid": "6906b03add619e73f9c078d4"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 1",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046010116.png",
+    "1762046010119.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:30.140Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:30.140Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b03ddd619e73f9c078dc"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 2",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046013090.png",
+    "1762046013092.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:33.115Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:33.115Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b03fdd619e73f9c078e4"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 3",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046015090.png",
+    "1762046015092.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:35.101Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:35.101Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b041dd619e73f9c078ec"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 4",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046017752.png",
+    "1762046017754.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:37.765Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:37.765Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b044dd619e73f9c078f4"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 5",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046020070.png",
+    "1762046020071.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:40.080Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:40.080Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b046dd619e73f9c078fc"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 6",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046022537.png",
+    "1762046022538.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:42.544Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:42.544Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b049dd619e73f9c07904"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 7",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046025215.png",
+    "1762046025216.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:45.225Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:45.225Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b04bdd619e73f9c0790c"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 8",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046027458.png",
+    "1762046027459.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:47.466Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:47.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b04ddd619e73f9c07914"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 9",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046029961.png",
+    "1762046029962.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:49.969Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:49.969Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b052dd619e73f9c0791c"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 10",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762046034767.png",
+    "1762046034768.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:13:54.795Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:13:54.795Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b5117deaa1735d908f80"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 11",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762047249024.png",
+    "1762047249026.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:34:09.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:34:09.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b5587deaa1735d908f8e"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 12",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762047320034.png",
+    "1762047320035.png",
+    "1762047320038.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:35:20.052Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:35:20.052Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b64a7deaa1735d908f9e"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 13",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762047562603.png",
+    "1762047562604.png",
+    "1762047562607.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:39:22.641Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:39:22.641Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b64d7deaa1735d908fa6"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 14",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762047565529.png",
+    "1762047565531.png",
+    "1762047565533.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:39:25.543Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:39:25.543Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906b6507deaa1735d908fae"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Example News Title 15",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762047568267.png",
+    "1762047568268.png",
+    "1762047568270.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T01:39:28.277Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T01:39:28.277Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906bc3bdfbbd34e33359162"
+  },
+  "user": {
+    "$oid": "690568768b1c551e6ce02026"
+  },
+  "title": "Example News Title 16 by staff",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762049083864.png",
+    "1762049083865.png",
+    "1762049083870.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T02:04:43.894Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T02:04:43.894Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906bc43dfbbd34e3335916a"
+  },
+  "user": {
+    "$oid": "690568768b1c551e6ce02026"
+  },
+  "title": "Example News Title 17 by staff",
+  "description": [
+    "This is the first paragraph of the news.",
+    "This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple).This is the second paragraph (you can add multiple)."
+  ],
+  "imageUrl": [
+    "1762049091732.png",
+    "1762049091734.png",
+    "1762049091738.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T02:04:51.747Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T02:04:51.747Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906c349dfbbd34e3335947a"
+  },
+  "user": {
+    "$oid": "690568768b1c551e6ce02026"
+  },
+  "title": "University of Peradeniya Launches Psychological Wellbeing & Assessment Center to Support Student Mental Health",
+  "description": [
+    "The University of Peradeniya has inaugurated its state-of-the-art Psychological Wellbeing & Assessment Center, a dedicated facility designed to promote mental wellness and emotional resilience among students, staff, and faculty. The center aims to provide a confidential, supportive environment where members of the university community can access professional mental health services and psychological assessments.",
+    "The establishment of the center reflects the university’s commitment to fostering holistic education—one that nurtures not only academic excellence but also emotional intelligence and psychological stability. The initiative underscores the administration’s growing focus on mental health awareness, resilience training, and early identification of psychological challenges.",
+    "The center provides a wide range of services, including one-on-one counseling sessions, psychological assessments, group therapy programs, and stress management workshops. Additionally, it will conduct seminars on emotional wellbeing, mindfulness, and coping strategies to help students manage academic pressures and personal challenges effectively.",
+    "Led by a team of qualified psychologists and counselors, the Psychological Wellbeing & Assessment Center operates under the guidance of the Department of Psychology. The center also collaborates with the university’s medical faculty and external mental health professionals to ensure comprehensive support and evidence-based care.",
+    "In the coming years, the center plans to introduce digital mental health screening tools and expand its outreach through awareness campaigns across all faculties. By prioritizing mental health, the University of Peradeniya aims to create a compassionate, supportive, and balanced academic environment where every individual can thrive."
+  ],
+  "imageUrl": [
+    "1762050889259.png",
+    "1762050889264.png",
+    "1762050889283.png",
+    "1762050889292.png"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T02:34:49.303Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T02:34:49.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6906c3eddfbbd34e333594ac"
+  },
+  "user": {
+    "$oid": "69044a0701fad0a5a873ba52"
+  },
+  "title": "Empowering Minds: New Psychological Wellbeing & Assessment Center Opens at the University of Peradeniya",
+  "description": [
+    "The University of Peradeniya proudly opened its new Psychological Wellbeing & Assessment Center, marking a major step toward enhancing student mental health and overall wellbeing. This initiative is part of the university’s broader vision to build a supportive and inclusive learning environment for all.",
+    "The new center offers a safe and confidential space where students can openly discuss their emotional and psychological concerns. It provides access to professional counselors, mental health workshops, and wellness programs designed to help students manage stress, anxiety, and other challenges faced during university life.",
+    "Beyond counseling, the center is a hub for mental health awareness and education. It aims to reduce stigma around seeking help by hosting open forums, mindfulness sessions, and resilience-building activities that encourage students to prioritize self-care and emotional balance.",
+    "The facility is led by a team of certified psychologists and guided by the Department of Psychology. Collaborations with the university’s health services and external experts ensure that every student receives professional and personalized support tailored to their individual needs.",
+    "With the launch of the Psychological Wellbeing & Assessment Center, the University of Peradeniya reaffirms its dedication to nurturing not only academic excellence but also emotional strength. The initiative reflects a growing commitment to mental health as a cornerstone of success, happiness, and sustainable education."
+  ],
+  "imageUrl": [
+    "1762051053785.PNG",
+    "1762051053788.PNG",
+    "1762051053788.PNG",
+    "1762082535774.PNG"
+  ],
+  "createdAt": {
+    "$date": "2025-11-02T02:37:33.797Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-02T11:22:22.251Z"
+  },
+  "__v": 12
+}]

@@ -1,0 +1,420 @@
+[{
+  "_id": {
+    "$oid": "691000000000000000000001"
+  },
+  "question": "What services does the Psychological Wellbeing & Assessment Center provide?",
+  "answer": "The center offers counseling, psychological assessments, workshops on mental health, and wellbeing programs for students and staff.",
+  "createdAt": {
+    "$date": "2025-11-03T03:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000002"
+  },
+  "question": "Who can access the center's services?",
+  "answer": "All registered students, academic staff, and non-academic staff of the University of Peradeniya can access the center's services.",
+  "createdAt": {
+    "$date": "2025-11-03T03:01:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:01:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000003"
+  },
+  "question": "Do I need an appointment to see a counselor?",
+  "answer": "Yes, it is recommended to make an appointment in advance to ensure availability of a counselor.",
+  "createdAt": {
+    "$date": "2025-11-03T03:02:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:02:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000004"
+  },
+  "question": "Is the counseling confidential?",
+  "answer": "Yes, all counseling sessions are strictly confidential and your personal information will not be shared without consent.",
+  "createdAt": {
+    "$date": "2025-11-03T03:03:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:03:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000005"
+  },
+  "question": "Are services free of charge?",
+  "answer": "Yes, services provided by the center are free for all university students and staff.",
+  "createdAt": {
+    "$date": "2025-11-03T03:04:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:04:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000006"
+  },
+  "question": "What types of assessments are available?",
+  "answer": "The center provides psychological testing for academic stress, personality assessments, mental health evaluations, and cognitive assessments.",
+  "createdAt": {
+    "$date": "2025-11-03T03:05:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:05:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000007"
+  },
+  "question": "Where is the center located?",
+  "answer": "The center is located within the University of Peradeniya campus in Kandy. Specific directions can be obtained from the university website.",
+  "createdAt": {
+    "$date": "2025-11-03T03:06:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:06:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000008"
+  },
+  "question": "What are the center's working hours?",
+  "answer": "The center operates from Monday to Friday, 8:30 AM to 4:30 PM. Special appointments can be arranged if necessary.",
+  "createdAt": {
+    "$date": "2025-11-03T03:07:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:07:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000009"
+  },
+  "question": "How can I make an appointment?",
+  "answer": "Appointments can be made by calling the center's contact number, emailing, or using the online booking form available on the university website.",
+  "createdAt": {
+    "$date": "2025-11-03T03:08:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:08:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000010"
+  },
+  "question": "Can I attend sessions online?",
+  "answer": "Yes, online counseling sessions are available via secure video conferencing tools, especially for students who cannot visit the campus.",
+  "createdAt": {
+    "$date": "2025-11-03T03:09:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:09:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000011"
+  },
+  "question": "Are walk-in sessions allowed?",
+  "answer": "Walk-ins are accepted based on counselor availability, but prior appointments are highly recommended.",
+  "createdAt": {
+    "$date": "2025-11-03T03:10:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:10:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000012"
+  },
+  "question": "Can non-students access the center?",
+  "answer": "Primarily, the center serves university students and staff. Special cases for external individuals are considered upon request.",
+  "createdAt": {
+    "$date": "2025-11-03T03:11:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:11:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000013"
+  },
+  "question": "Does the center provide crisis intervention?",
+  "answer": "Yes, the center offers immediate support for students experiencing acute psychological crises or emergencies.",
+  "createdAt": {
+    "$date": "2025-11-03T03:12:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:12:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000014"
+  },
+  "question": "What mental health issues can the center help with?",
+  "answer": "The center supports issues including stress, anxiety, depression, academic pressure, interpersonal problems, and adjustment difficulties.",
+  "createdAt": {
+    "$date": "2025-11-03T03:13:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:13:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000015"
+  },
+  "question": "Does the center run workshops?",
+  "answer": "Yes, the center conducts workshops on stress management, emotional wellbeing, mindfulness, and resilience building.",
+  "createdAt": {
+    "$date": "2025-11-03T03:14:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:14:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000016"
+  },
+  "question": "Are sessions individual or group-based?",
+  "answer": "The center offers both individual counseling and group sessions depending on the need of the student or staff member.",
+  "createdAt": {
+    "$date": "2025-11-03T03:15:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:15:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000017"
+  },
+  "question": "How long is a typical counseling session?",
+  "answer": "A typical session lasts approximately 45-60 minutes, but duration can vary based on individual needs.",
+  "createdAt": {
+    "$date": "2025-11-03T03:16:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:16:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000018"
+  },
+  "question": "Is prior experience with counseling necessary?",
+  "answer": "No, anyone seeking support can attend counseling regardless of prior experience.",
+  "createdAt": {
+    "$date": "2025-11-03T03:17:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:17:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000019"
+  },
+  "question": "Can I be referred to other mental health services?",
+  "answer": "Yes, the center can provide referrals to specialized services outside the university if required.",
+  "createdAt": {
+    "$date": "2025-11-03T03:18:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:18:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000020"
+  },
+  "question": "Does the center provide online resources?",
+  "answer": "Yes, students and staff can access articles, guides, and self-help materials on the university's mental health portal.",
+  "createdAt": {
+    "$date": "2025-11-03T03:19:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:19:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000021"
+  },
+  "question": "Are sessions offered in Sinhala and English?",
+  "answer": "Yes, counseling is provided in both Sinhala and English according to the preference of the individual.",
+  "createdAt": {
+    "$date": "2025-11-03T03:20:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:20:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000022"
+  },
+  "question": "Can faculty members seek support for work-related stress?",
+  "answer": "Yes, the center provides support for both personal and work-related mental health concerns for faculty and staff.",
+  "createdAt": {
+    "$date": "2025-11-03T03:21:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:21:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000023"
+  },
+  "question": "Does the center help students with exam stress?",
+  "answer": "Yes, counseling for exam-related stress and performance anxiety is one of the core services.",
+  "createdAt": {
+    "$date": "2025-11-03T03:22:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:22:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000024"
+  },
+  "question": "Is the center involved in research?",
+  "answer": "Yes, the center conducts research on psychological wellbeing, student mental health, and evidence-based interventions.",
+  "createdAt": {
+    "$date": "2025-11-03T03:23:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:23:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000025"
+  },
+  "question": "Are parents allowed to attend counseling sessions?",
+  "answer": "Typically, counseling sessions are for the student alone, but parents may be involved with consent and in special cases.",
+  "createdAt": {
+    "$date": "2025-11-03T03:24:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:24:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000026"
+  },
+  "question": "Does the center handle group conflicts?",
+  "answer": "Yes, the center mediates conflicts and provides support for group dynamics and interpersonal issues.",
+  "createdAt": {
+    "$date": "2025-11-03T03:25:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:25:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000027"
+  },
+  "question": "Can students continue sessions over multiple weeks?",
+  "answer": "Yes, students can schedule recurring sessions for ongoing support and follow-ups.",
+  "createdAt": {
+    "$date": "2025-11-03T03:26:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:26:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000028"
+  },
+  "question": "Are there emergency contact numbers provided?",
+  "answer": "Yes, the center provides emergency contact numbers for psychological support outside working hours.",
+  "createdAt": {
+    "$date": "2025-11-03T03:27:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:27:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000029"
+  },
+  "question": "Can the center assist with career-related stress?",
+  "answer": "Yes, the center offers counseling for career choices, academic pressures, and future planning anxiety.",
+  "createdAt": {
+    "$date": "2025-11-03T03:28:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:28:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691000000000000000000030"
+  },
+  "question": "Does the center collaborate with other university departments?",
+  "answer": "Yes, the center collaborates with faculties, student services, and health units to provide integrated mental health support.",
+  "createdAt": {
+    "$date": "2025-11-03T03:29:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-03T03:29:00.000Z"
+  },
+  "__v": 0
+}]
