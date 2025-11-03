@@ -69,7 +69,7 @@ const FAQController = {
                 answer
             } = req.body
 
-            const dot = UpdateFaqDTO(token, questionID, answer)
+            const dto = UpdateFaqDTO(token, questionID, answer)
 
             const result = await FAQService.UpdateFAQ(
                 dto.token,

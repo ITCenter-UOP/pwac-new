@@ -32,6 +32,9 @@ import ManageResource from '../pages/Dashboard/Resource/ManageResource'
 import CreateResource from '../pages/Dashboard/Resource/CreateResource'
 import ViewResource from '../pages/Dashboard/Resource/ViewResource'
 import Resource from '../pages/HomePage/Resource/Resource'
+import ManageFAQ from '../pages/Dashboard/FAQs/manageFAQ'
+import CreateFAQ from '../pages/Dashboard/FAQs/CreateFAQ'
+import UpdateFAQ from '../pages/Dashboard/FAQs/UpdateFAQ'
 
 function App() {
     return (
@@ -49,9 +52,9 @@ function App() {
                     <Route path='news' element={<AllNews />} />
                     <Route path='view-news/:title' element={<GetOneNEWS />} />
                     <Route path='workshops' element={<WorkShop />} />
-                    <Route path='aboutus' element={<Aboutus /> } />
-                    <Route path='services' element={<Services /> } />
-                    <Route path='resources' element={<Resource /> } /> 
+                    <Route path='aboutus' element={<Aboutus />} />
+                    <Route path='services' element={<Services />} />
+                    <Route path='resources' element={<Resource />} />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
@@ -73,7 +76,7 @@ function App() {
                     {/* workshop management */}
 
                     <Route path='manage-workshop' element={<PrivateRoute roles={['admin', 'staff']}><ManageWorkshop /> </PrivateRoute>} />
-                    <Route path='create-workshop' element={<PrivateRoute roles={['admin', 'staff']}><CreateWorkshop /> </PrivateRoute>} />                   
+                    <Route path='create-workshop' element={<PrivateRoute roles={['admin', 'staff']}><CreateWorkshop /> </PrivateRoute>} />
                     <Route path='update-workshop/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateWorkshop /> </PrivateRoute>} />
 
                     {/* Resource Management */}
@@ -81,7 +84,13 @@ function App() {
                     <Route path='manage-resource' element={<PrivateRoute roles={['admin', 'staff']}><ManageResource /> </PrivateRoute>} />
                     <Route path='create-resource' element={<PrivateRoute roles={['admin', 'staff']}><CreateResource /> </PrivateRoute>} />
                     <Route path='view-resource/:id' element={<PrivateRoute roles={['admin', 'staff']}><ViewResource /> </PrivateRoute>} />
-                    
+
+                    {/* faq management */}
+                    <Route path='manage-faq' element={<PrivateRoute roles={['admin', 'staff']}><ManageFAQ /> </PrivateRoute>} />
+                    <Route path='create-faq' element={<PrivateRoute roles={['admin', 'staff']}><CreateFAQ /> </PrivateRoute>} />
+                    <Route path='update-faq/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateFAQ /> </PrivateRoute>} />
+
+
 
                 </Route>
             </Routes>

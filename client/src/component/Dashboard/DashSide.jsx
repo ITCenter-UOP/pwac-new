@@ -50,7 +50,7 @@ const DashSide = ({ closeSidebar }) => {
         { name: "News & Event", icon: <FaNewspaper />, link: "/Dashboard/manage-news" },
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/manage-workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/manage-resource" },
-        { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/faq" },
+        { name: "FAQ", icon: <FaQuestion />, link: "/Dashboard/manage-faq" },
         { name: "User Activities", icon: <Activity />, link: "/Dashboard/user-logs" },
     ];
 

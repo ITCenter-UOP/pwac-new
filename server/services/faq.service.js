@@ -80,7 +80,7 @@ class FAQService {
         const user = await User.findOne({ email: decoded.email });
         if (!user) throw new Error("User not found");
 
-        const checkfaq = await FAQ.findOne({ question: question })
+        const checkfaq = await FAQ.findOne({ _id: quesitonid })
         if (!checkfaq) throw new Error("FAQ Cannot find by Given Qustiong");
 
         const updateFAQ = await FAQ.findByIdAndUpdate(
