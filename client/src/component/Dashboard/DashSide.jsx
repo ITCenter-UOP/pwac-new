@@ -46,7 +46,7 @@ const DashSide = ({ closeSidebar }) => {
     const navitem = [
         { name: "Dashboard", icon: <BiSolidDashboard />, link: "/Dashboard" },
         { name: "Users", icon: <FaUser />, link: "/Dashboard/manage-users" },
-        { name: "Appointment", icon: <GrSchedules />, link: "/Dashboard/appointment" },
+        { name: "Appointment", icon: <GrSchedules />, link: "/Dashboard/manage-appointments" },
         { name: "News & Event", icon: <FaNewspaper />, link: "/Dashboard/manage-news" },
         { name: "WorkShop", icon: <MdEvent />, link: "/Dashboard/manage-workshop" },
         { name: "Resources", icon: <FiBook />, link: "/Dashboard/manage-resource" },
