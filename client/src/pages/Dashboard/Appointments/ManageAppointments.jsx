@@ -160,23 +160,24 @@ const ManageAppointments = () => {
                                     <td className="px-6 py-4">
                                         <span
                                             className={`px-3 py-1 rounded-lg text-xs font-semibold ${a.status === "Pending"
-                                                    ? "bg-yellow-600/30 text-yellow-300"
-                                                    : a.status === "Approved"
-                                                        ? "bg-green-600/30 text-green-300"
-                                                        : "bg-red-600/30 text-red-300"
+                                                ? "bg-yellow-600/30 text-yellow-300"
+                                                : a.status === "Approved"
+                                                    ? "bg-green-600/30 text-green-300"
+                                                    : "bg-red-600/30 text-red-300"
                                                 }`}
                                         >
                                             {a.status}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <button
-                                            onClick={() => alert(`View appointment: ${a._id}`)}
-                                            className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
+                                        <a href={`/Dashboard/update-appointment/${a._id}`}>
+                                            <button
+                                                className="px-3 py-1.5 rounded-lg bg-fuchsia-700/30 hover:bg-fuchsia-600/40 
                                             text-fuchsia-200 text-xs font-medium transition-all duration-200 shadow-[0_0_10px_rgba(147,51,234,0.25)]"
-                                        >
-                                            View
-                                        </button>
+                                            >
+                                                View
+                                            </button>
+                                        </a>
                                     </td>
                                 </motion.tr>
                             ))
