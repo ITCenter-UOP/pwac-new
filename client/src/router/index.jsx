@@ -38,6 +38,8 @@ import UpdateFAQ from '../pages/Dashboard/FAQs/UpdateFAQ'
 import FAQ from '../pages/HomePage/FAQs/FAQ'
 import ManageAppointments from '../pages/Dashboard/Appointments/ManageAppointments'
 import UpdateAppointment from '../pages/Dashboard/Appointments/UpdateAppointment'
+import MyAccount from '../layouts/MyAccount'
+import DashboardMy from '../pages/MyAccount/DashboardMy'
 
 function App() {
     return (
@@ -96,10 +98,15 @@ function App() {
                     <Route path='update-faq/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateFAQ /> </PrivateRoute>} />
 
                     {/* appointment management */}
-                    
+
                     <Route path='manage-appointments' element={<PrivateRoute roles={['admin', 'staff']}><ManageAppointments /> </PrivateRoute>} />
                     <Route path='update-appointment/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateAppointment /> </PrivateRoute>} />
 
+                </Route>
+
+                <Route path='/my-account' element={<PrivateRoute roles={['admin', 'user']}><MyAccount /></PrivateRoute>}>
+                    <Route path='*' element={<PrivateRoute roles={['admin', 'staff', 'user']}><DashError /> </PrivateRoute>} />
+                    <Route index element={<PrivateRoute roles={['admin', 'user']}><DashboardMy /> </PrivateRoute>} />
                 </Route>
             </Routes>
         </BrowserRouter>
