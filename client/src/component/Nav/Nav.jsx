@@ -74,10 +74,13 @@ const Nav = () => {
                 {/* Right Section */}
                 <div className="flex items-center gap-6">
                     {renderRoleButton()}
-                    <button className="flex items-center gap-2 text-sm hover:text-[#560606] bg-white text-[#560606] px-3 py-1.5 rounded-full transition-all duration-300 hover:bg-gray-100 shadow-sm">
-                        <FaQuestionCircle />
-                        <span>FAQ</span>
-                    </button>
+
+                    <a href="/faqs">
+                        <button className="flex items-center gap-2 text-sm hover:text-[#560606] bg-white text-[#560606] px-3 py-1.5 rounded-full transition-all duration-300 hover:bg-gray-100 shadow-sm">
+                            <FaQuestionCircle />
+                            <span>FAQ</span>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

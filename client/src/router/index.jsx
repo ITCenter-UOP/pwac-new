@@ -35,6 +35,7 @@ import Resource from '../pages/HomePage/Resource/Resource'
 import ManageFAQ from '../pages/Dashboard/FAQs/manageFAQ'
 import CreateFAQ from '../pages/Dashboard/FAQs/CreateFAQ'
 import UpdateFAQ from '../pages/Dashboard/FAQs/UpdateFAQ'
+import FAQ from '../pages/HomePage/FAQs/FAQ'
 
 function App() {
     return (
@@ -55,6 +56,7 @@ function App() {
                     <Route path='aboutus' element={<Aboutus />} />
                     <Route path='services' element={<Services />} />
                     <Route path='resources' element={<Resource />} />
+                    <Route path='faqs' element={<FAQ /> } />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
