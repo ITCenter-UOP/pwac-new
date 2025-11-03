@@ -154,7 +154,6 @@ const ManageResource = () => {
                         <tr className="text-fuchsia-300 uppercase text-xs tracking-wider bg-gradient-to-r from-fuchsia-700/30 to-purple-700/30">
                             <th className="px-6 py-4 text-left">#</th>
                             <th className="px-6 py-4 text-left">Title</th>
-                            <th className="px-6 py-4 text-left">Content</th>
                             <th className="px-6 py-4 text-left">Link</th>
                             <th className="px-6 py-4 text-left">Created At</th>
                             <th className="px-6 py-4 text-left">Action</th>
@@ -179,9 +178,6 @@ const ManageResource = () => {
                                     </td>
                                     <td className="px-6 py-4 font-semibold text-fuchsia-200">
                                         {r.title}
-                                    </td>
-                                    <td className="px-6 py-4 text-fuchsia-300">
-                                        {r.content}
                                     </td>
                                     <td className="px-6 py-4">
                                         <a
