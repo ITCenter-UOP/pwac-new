@@ -26,6 +26,7 @@ const nonauthRoute = require('./routes/nonauth.route')
 const workshopRoute = require('./routes/workshop.route')
 const resourceRoute = require('./routes/resource.route')
 const faqRoute = require('./routes/faq.route')
+const appointmentRoute = require('./routes/appointment.route')
 
 // ---------------------- END of Importing Routes
 
@@ -122,6 +123,7 @@ app.use('/api/nonauth', nonauthRoute)
 app.use('/api/workshop', workshopRoute)
 app.use('/api/resource', resourceRoute)
 app.use('/api/faq', faqRoute)
+app.use('/api/appointment', appointmentRoute)
 
 // -------------- END routes-----------------------
 

@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
 
 const Menubar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { auth } = useAuth();
 
+    // Fix: evaluate auth before creating the array
     const secNavData = [
         { id: 1, name: "Home", link: "/" },
         { id: 2, name: "About", link: "/aboutus" },
         { id: 3, name: "Services", link: "/services" },
         { id: 4, name: "Team", link: "/team" },
-        { id: 5, name: "Appointment", link: "/appointment" },
+        { id: 5, name: "Appointment", link: !auth ? "/my-account" : "/login" },
         { id: 6, name: "Resources", link: "/resources" },
     ];
 
@@ -21,9 +24,12 @@ const Menubar = () => {
                 <ul className="hidden md:flex items-center gap-8">
                     {secNavData.map((item) => (
                         <li key={item.id}>
-                            <a href={item.link} className="text-gray-700 hover:text-[#560606] transition font-medium">
+                            <Link
+                                to={item.link}
+                                className="text-gray-700 hover:text-[#560606] transition font-medium"
+                            >
                                 {item.name}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
