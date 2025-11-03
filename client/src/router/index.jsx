@@ -28,6 +28,9 @@ import UpdateWorkshop from '../pages/Dashboard/WorkShop/UpdateWorkshop'
 import CreateWorkshop from '../pages/Dashboard/WorkShop/CreateWorkshop'
 import Aboutus from '../pages/HomePage/AboutUs/Aboutus'
 import Services from '../pages/HomePage/Services/Services'
+import ManageResource from '../pages/Dashboard/Resource/ManageResource'
+import CreateResource from '../pages/Dashboard/Resource/CreateResource'
+import ViewResource from '../pages/Dashboard/Resource/ViewResource'
 
 function App() {
     return (
@@ -71,7 +74,13 @@ function App() {
                     <Route path='create-workshop' element={<PrivateRoute roles={['admin', 'staff']}><CreateWorkshop /> </PrivateRoute>} />                   
                     <Route path='update-workshop/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateWorkshop /> </PrivateRoute>} />
 
+                    {/* Resource Management */}
+
+                    <Route path='manage-resource' element={<PrivateRoute roles={['admin', 'staff']}><ManageResource /> </PrivateRoute>} />
+                    <Route path='create-resource' element={<PrivateRoute roles={['admin', 'staff']}><CreateResource /> </PrivateRoute>} />
+                    <Route path='view-resource/:id' element={<PrivateRoute roles={['admin', 'staff']}><ViewResource /> </PrivateRoute>} />
                     
+
                 </Route>
             </Routes>
         </BrowserRouter>

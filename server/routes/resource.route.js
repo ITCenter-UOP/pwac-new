@@ -9,7 +9,7 @@ router.post('/create-resource', auth, checkPermission(['resource:create']), Reso
 
 router.get('/all-resource', ResourceController.getallresource)
 
-router.get('/get-one-resource', ResourceController.getoneresource)
+router.get('/get-one-resource/:id', ResourceController.getoneresource)
 
 router.delete('/delete-resource/:id', auth, checkPermission(['resource:delete']), ResourceController.deleteResource)
 
