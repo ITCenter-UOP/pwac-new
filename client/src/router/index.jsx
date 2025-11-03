@@ -40,6 +40,7 @@ import ManageAppointments from '../pages/Dashboard/Appointments/ManageAppointmen
 import UpdateAppointment from '../pages/Dashboard/Appointments/UpdateAppointment'
 import MyAccount from '../layouts/MyAccount'
 import DashboardMy from '../pages/MyAccount/DashboardMy'
+import DashErrorUser from '../component/MyAccount/DashErrorUser'
 
 function App() {
     return (
@@ -60,7 +61,7 @@ function App() {
                     <Route path='aboutus' element={<Aboutus />} />
                     <Route path='services' element={<Services />} />
                     <Route path='resources' element={<Resource />} />
-                    <Route path='faqs' element={<FAQ /> } />
+                    <Route path='faqs' element={<FAQ />} />
                 </Route>
 
                 <Route path='/Dashboard' element={<PrivateRoute roles={['admin', 'staff']}><Dashboard /></PrivateRoute>}>
@@ -105,8 +106,9 @@ function App() {
                 </Route>
 
                 <Route path='/my-account' element={<PrivateRoute roles={['admin', 'user']}><MyAccount /></PrivateRoute>}>
-                    <Route path='*' element={<PrivateRoute roles={['admin', 'staff', 'user']}><DashError /> </PrivateRoute>} />
+                    <Route path='*' element={<PrivateRoute roles={['admin', 'staff', 'user']}><DashErrorUser /> </PrivateRoute>} />
                     <Route index element={<PrivateRoute roles={['admin', 'user']}><DashboardMy /> </PrivateRoute>} />
+                    <Route path='my-profile' element={<PrivateRoute roles={['admin', 'user', 'staff']}><Profile /> </PrivateRoute>} />
                 </Route>
             </Routes>
         </BrowserRouter>
