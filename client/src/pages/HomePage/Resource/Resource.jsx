@@ -183,15 +183,7 @@ const Resource = () => {
                                         Visit Resource <FaExternalLinkAlt size={14} />
                                     </a>
                                 )}
-                                <div className="mt-4">
-                                    <a
-                                        href={`/view-resource/${res._id}`}
-                                        className="text-[#560606] font-semibold hover:underline"
-                                    >
-                                        View More →
-                                    </a>
-                                </div>
-                            </div>
+                              </div>
                         </div>
                     ))
                 )}
