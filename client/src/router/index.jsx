@@ -43,6 +43,7 @@ import DashboardMy from '../pages/MyAccount/DashboardMy'
 import DashErrorUser from '../component/MyAccount/DashErrorUser'
 import CreateAppointment from '../pages/MyAccount/CreateAppointment'
 import TrackMyAppointment from '../pages/MyAccount/TrackMyAppointment'
+import Team from '../pages/HomePage/Team/Team'
 
 function App() {
     return (
@@ -65,6 +66,7 @@ function App() {
                     <Route path='services' element={<Services />} />
                     <Route path='resources' element={<Resource />} />
                     <Route path='faqs' element={<FAQ />} />
+                    <Route path='team' element={<Team /> } />
                 </Route>
 
                 {/* admin and staff dashboard */}

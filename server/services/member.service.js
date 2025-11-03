@@ -18,7 +18,8 @@ const {
     getProfileImageResDTO,
     UpdatePersonalInforResDTO,
     GetMyPersonlInforResDTO,
-    GetAllUserPersonlInforResDTO
+    GetAllUserPersonlInforResDTO,
+    GetAllMembersResDTO
 } = require("../dtos/member.dto")
 
 
@@ -197,9 +198,32 @@ class MemberService {
         return GetMyPersonlInforResDTO(getpersolinfor)
     }
 
-    static async GetAllUserPersonInfor () {
-        const alluserpdata= await PersonalInfor.find()
+    static async GetAllUserPersonInfor() {
+        const alluserpdata = await PersonalInfor.find()
         return GetAllUserPersonlInforResDTO(alluserpdata)
+    }
+
+    static async GetAllMembers() {
+        const roles = await Role.find({ name: { $in: ['Admin', 'Staff', 'admin', 'staff'] } }).select('_id');
+        const roleIds = roles.map(r => r._id);
+
+        const allMembers = await User.find({ role: { $in: roleIds } })
+            .select('-password')
+            .populate('role', '-permissions');
+
+        const enrichedMembers = await Promise.all(
+            allMembers.map(async (user) => {
+                const personal = await PersonalInfor.findOne({ user: user._id }).select('address expertise contact desc');
+                const image = await ProfileImage.findOne({ user: user._id }).select('profileimg');
+                return {
+                    ...user.toObject(),
+                    personalInfor: personal || null,
+                    profileImage: image || null,
+                };
+            })
+        );
+
+        return GetAllMembersResDTO(enrichedMembers);
     }
 }
 

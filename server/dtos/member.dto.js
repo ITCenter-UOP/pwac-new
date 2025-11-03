@@ -13,6 +13,7 @@ exports.GetMyPersonlInforResDTO = (result, message="Personal Information Fetched
 
 exports.GetAllUserPersonlInforResDTO = (result, message="Personal Information Fetched Successfully") => ({ success: true, result, message })
 
+exports.GetAllMembersResDTO = (result, message ="All Members Fetched Successfully") => ({ success: true, result, message })
 
 // Error 
 exports.ErrorResDTO = (message = "Something went wrong") => ({ success: false, message })

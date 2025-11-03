@@ -139,8 +139,19 @@ const MemberController = {
         catch(err){
             return res.status(400).json(ErrorResDTO(err.message));
         }
+    },
+
+    getallmembers: async(req, res) => {
+        try{
+            const result = await MemberService.GetAllMembers()
+            res.status(200).json(result)
+        }
+        catch(err){
+            return res.status(400).json(ErrorResDTO(err.message));
+        }
     }
 
+    
 
 };
 

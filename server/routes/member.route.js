@@ -16,4 +16,6 @@ router.post('/update-personal-infor', auth, MemberController.updatePersonalInfor
 
 router.get('/get-personal-infor', auth, MemberController.getmypersonldata)
 
+router.get('/get-all-members', MemberController.getallmembers)
+
 module.exports = router;
