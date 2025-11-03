@@ -146,6 +146,28 @@ const ItemCards = () => {
         fetchAllResources();
     }, [token]);
 
+    const [FaqList, setFaqList] = useState([])
+
+    useEffect(() => {
+        const fetchFAQs = async () => {
+            try {
+                const res = await API.get(`/faq/all-faq?nocache=${Date.now()}`);
+                if (res.data?.success && Array.isArray(res.data.result)) {
+                    setFaqList(res.data.result);
+                } else {
+                    setFaqList([]);
+                }
+            } catch (err) {
+                console.error("Failed to fetch FAQs:", err);
+                setError("Could not load FAQs");
+                setFaqList([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchFAQs();
+    }, []);
+
     const items = [
         { id: 1, name: "Users", icon: <FaUsers />, value: userCount },
         { id: 2, name: "Appointments", icon: <GrSchedules />, value: 18 },
@@ -153,7 +175,7 @@ const ItemCards = () => {
         { id: 4, name: "Team", icon: <IoPeople />, value: adminCount + staffCount },
         { id: 5, name: "Workshops", icon: <MdEvent />, value: WorkshopList.length },
         { id: 6, name: "Resources", icon: <FiBook />, value: ResourceList.length },
-        { id: 7, name: "FAQs", icon: <FaQuestion />, value: 15 },
+        { id: 7, name: "FAQs", icon: <FaQuestion />, value: FaqList.length },
     ];
 
     return (
