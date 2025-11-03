@@ -7,13 +7,16 @@ const Menubar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { auth } = useAuth();
 
-    // Fix: evaluate auth before creating the array
+    // Determine the correct Appointment link
+    const appointmentLink =
+        auth && auth.role === "user" ? "/my-account" : "/login";
+
     const secNavData = [
         { id: 1, name: "Home", link: "/" },
         { id: 2, name: "About", link: "/aboutus" },
         { id: 3, name: "Services", link: "/services" },
         { id: 4, name: "Team", link: "/team" },
-        { id: 5, name: "Appointment", link: !auth ? "/my-account" : "/login" },
+        { id: 5, name: "Appointment", link: appointmentLink },
         { id: 6, name: "Resources", link: "/resources" },
     ];
 
