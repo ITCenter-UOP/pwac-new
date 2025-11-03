@@ -36,6 +36,8 @@ import ManageFAQ from '../pages/Dashboard/FAQs/manageFAQ'
 import CreateFAQ from '../pages/Dashboard/FAQs/CreateFAQ'
 import UpdateFAQ from '../pages/Dashboard/FAQs/UpdateFAQ'
 import FAQ from '../pages/HomePage/FAQs/FAQ'
+import ManageAppointments from '../pages/Dashboard/Appointments/ManageAppointments'
+import UpdateAppointment from '../pages/Dashboard/Appointments/UpdateAppointment'
 
 function App() {
     return (
@@ -88,11 +90,15 @@ function App() {
                     <Route path='view-resource/:id' element={<PrivateRoute roles={['admin', 'staff']}><ViewResource /> </PrivateRoute>} />
 
                     {/* faq management */}
+
                     <Route path='manage-faq' element={<PrivateRoute roles={['admin', 'staff']}><ManageFAQ /> </PrivateRoute>} />
                     <Route path='create-faq' element={<PrivateRoute roles={['admin', 'staff']}><CreateFAQ /> </PrivateRoute>} />
                     <Route path='update-faq/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateFAQ /> </PrivateRoute>} />
 
-
+                    {/* appointment management */}
+                    
+                    <Route path='manage-appointments' element={<PrivateRoute roles={['admin', 'staff']}><ManageAppointments /> </PrivateRoute>} />
+                    <Route path='update-appointment/:id' element={<PrivateRoute roles={['admin', 'staff']}><UpdateAppointment /> </PrivateRoute>} />
 
                 </Route>
             </Routes>
